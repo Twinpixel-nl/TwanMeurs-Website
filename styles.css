@@ -220,3 +220,86 @@ button,
 .case-study {
   cursor: none;
 }
+/* Plak dit in je styles.css, bijvoorbeeld voor de responsiviteit-sectie */
+
+/* ======== 5.1 EXPERTISE SECTIE ======== */
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.expertise-card {
+    background-color: var(--color-background-card);
+    border: 1px solid var(--color-border);
+    padding: 2.5rem;
+    border-radius: 8px;
+}
+
+.expertise-card__title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.expertise-card__title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--color-accent);
+}
+
+.expertise-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.expertise-card__list li {
+    padding: 0.5rem 0;
+    color: var(--color-text-medium);
+    border-bottom: 1px solid var(--color-border);
+}
+.expertise-card__list li:last-child {
+    border-bottom: none;
+}
+
+
+/* ======== 5.2 ERKENNING SECTIE ======== */
+.recognition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.recognition-card {
+    text-align: center;
+    padding: 2rem;
+    transition: transform var(--transition-fast);
+}
+.recognition-card:hover {
+    transform: translateY(-5px);
+}
+
+.recognition-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.recognition-card__title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.recognition-card__desc {
+    color: var(--color-text-medium);
+    font-size: 0.95rem;
+    max-width: 300px;
+    margin: 0 auto;
+}

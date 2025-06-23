@@ -1,38 +1,26 @@
 <!DOCTYPE html>
-<!-- De 'lang' attribuut wordt dynamisch aangepast door app.js -->
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO & Metadata (wordt ook vertaald) -->
     <title data-lang-key="metaTitle">Twan Meurs – Bruggenbouwer tussen IT & Bestuur</title>
     <meta name="description" data-lang-key="metaDescription" content="Twan Meurs vertaalt complexe technologie naar strategische bestuursbeslissingen. Bekijk mijn projecten en ontdek hoe ik IT-potentieel verbind met bestuurlijke realiteit.">
     <meta name="author" content="Twan Meurs">
-    <link rel="canonical" href="https://www.twanmeurs.nl/"> <!-- Vervang door je uiteindelijke domein -->
-
-    <!-- Social Media Sharing (Open Graph & Twitter Cards) -->
+    <link rel="canonical" href="https://www.twanmeurs.nl/">
     <meta property="og:title" data-lang-key="metaTitle" content="Twan Meurs – Bruggenbouwer tussen IT & Bestuur">
     <meta property="og:description" data-lang-key="ogDescription" content="Ik help bestuurlijke organisaties en toonaangevende bedrijven vooruit door technologie te verbinden met strategie.">
-    <meta property="og:image" content="https://www.jouwwebsite.nl/og-image.jpg"> <!-- BELANGRIJK: maak en upload een 1200x630px afbeelding -->
-    <meta property="og:url" content="https://www.twanmeurs.nl/"> <!-- Vervang door je uiteindelijke domein -->
+    <meta property="og:image" content="https://www.jouwwebsite.nl/og-image.jpg">
+    <meta property="og:url" content="https://www.twanmeurs.nl/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-
-    <!-- Favicon -->
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Elementen voor de Custom Cursor -->
     <div class="cursor"></div>
     <div class="cursor-follower"></div>
 
@@ -42,7 +30,8 @@
             <nav class="header__nav">
                 <a href="#over" class="nav-link" data-lang-key="navAbout">Over Mij</a>
                 <a href="#projecten" class="nav-link" data-lang-key="navProjects">Projecten</a>
-                <a href="#loopbaan" class="nav-link" data-lang-key="navCareer">Loopbaan</a>
+                <a href="#loopbaan" class="nav-link" data-lang-key="navCareer">Loopbaan & Opleiding</a>
+                <a href="#expertise" class="nav-link" data-lang-key="navExpertise">Expertise</a>
                 <a href="#contact" class="nav-link" data-lang-key="navContact">Contact</a>
             </nav>
             <div class="header__language">
@@ -55,7 +44,6 @@
 
     <main>
         <section id="home" class="hero">
-            <!-- Div voor Parallax Effect -->
             <div class="hero__bg"></div>
             <div class="container hero__content">
                 <h1 class="hero__title reveal reveal--delay-0" data-lang-key="heroTitle">
@@ -94,30 +82,28 @@
             <div class="container">
                 <h2 class="section-title text-center reveal" data-lang-key="projectsTitle">Uitgelichte Projecten</h2>
                 <div class="case-study-grid">
-                    <!-- Case Study 1 -->
                     <div class="case-study reveal">
                         <header class="case-study__header">
-                            <h3 class="case-study__title" data-lang-key="p1Title">Digitale Transformatie Publieke Dienstverlening</h3>
-                            <p class="case-study__client" data-lang-key="p1Client">Klant: Ministerie van BZK</p>
-                            <div class="case-study__tags"><span class="tag" data-lang-key="p1Tag1">Strategie</span><span class="tag" data-lang-key="p1Tag2">Publieke Sector</span></div>
+                            <h3 class="case-study__title" data-lang-key="p1Title">Procesoptimalisatie & Advies</h3>
+                            <p class="case-study__client" data-lang-key="p1Client">Rol: Service Consultant @ Wageningse Universiteit</p>
+                            <div class="case-study__tags"><span class="tag">Procesanalyse</span><span class="tag">Advies</span><span class="tag">IT-infrastructuur</span></div>
                         </header>
                         <div class="case-study__par">
-                            <div class="par__item"><strong class="par__label" data-lang-key="parProblem">Probleem:</strong><span data-lang-key="p1Problem"> Verouderde systemen en versnipperde data leidden tot trage en foutgevoelige dienstverlening voor burgers.</span></div>
-                            <div class="par__item"><strong class="par__label" data-lang-key="parAction">Actie:</strong><span data-lang-key="p1Action"> Als lead consultant een stakeholderanalyse uitgevoerd, een nieuwe IT-architectuur ontworpen en de agile implementatie begeleid.</span></div>
-                            <div class="par__item"><strong class="par__label" data-lang-key="parResult">Resultaat:</strong><span data-lang-key="p1Result"> Doorlooptijd van aanvragen met 40% verminderd, datakwaliteit verbeterd en een 8.5/10 tevredenheidsscore behaald.</span></div>
+                            <div class="par__item"><strong class="par__label" data-lang-key="parChallenge">Uitdaging:</strong><span data-lang-key="p1Challenge"> De noodzaak om diverse IT-processen binnen de universiteit te verbeteren en de beschikbare middelen effectiever in te zetten.</span></div>
+                            <div class="par__item"><strong class="par__label" data-lang-key="parAction">Actie:</strong><span data-lang-key="p1Action"> Ik modelleerde bestaande processen, stelde concrete adviesrapporten op voor de IT-afdeling en inventariseerde de volledige audiovisuele infrastructuur.</span></div>
+                            <div class="par__item"><strong class="par__label" data-lang-key="parImpact">Impact:</strong><span data-lang-key="p1Impact"> Direct bijgedragen aan de efficiëntie van de IT-afdeling en een helder strategisch overzicht gecreëerd voor toekomstige investeringen en verbeteringen.</span></div>
                         </div>
                     </div>
-                    <!-- Case Study 2 -->
                     <div class="case-study reveal reveal--delay-1">
                         <header class="case-study__header">
-                            <h3 class="case-study__title" data-lang-key="p2Title">Implementatie van een CRM-Systeem</h3>
-                            <p class="case-study__client" data-lang-key="p2Client">Klant: Top 10 Consultancy Firm</p>
-                            <div class="case-study__tags"><span class="tag" data-lang-key="p2Tag1">Implementatie</span><span class="tag" data-lang-key="p2Tag2">Stakeholdermanagement</span></div>
+                            <h3 class="case-study__title" data-lang-key="p2Title">Bestuurlijke Vertegenwoordiging & Eventmanagement</h3>
+                            <p class="case-study__client" data-lang-key="p2Client">Rol: Student Assessor @ Christelijke Hogeschool Ede</p>
+                            <div class="case-study__tags"><span class="tag">Stakeholdermanagement</span><span class="tag">Eventmanagement</span><span class="tag">Beleidsbeïnvloeding</span></div>
                         </header>
                          <div class="case-study__par">
-                            <div class="par__item"><strong class="par__label" data-lang-key="parProblem">Probleem:</strong><span data-lang-key="p2Problem"> Gebrek aan een centraal klantbeeld belemmerde cross-selling en efficiënte samenwerking tussen afdelingen.</span></div>
-                            <div class="par__item"><strong class="par__label" data-lang-key="parAction">Actie:</strong><span data-lang-key="p2Action"> Requirements verzameld, leveranciersselectie begeleid en de brug gevormd tussen het technische team en 200+ eindgebruikers.</span></div>
-                            <div class="par__item"><strong class="par__label" data-lang-key="parResult">Resultaat:</strong><span data-lang-key="p2Result"> Succesvolle livegang binnen tijd en budget, wat leidde tot 15% meer gekwalificeerde leads in het eerste kwartaal.</span></div>
+                            <div class="par__item"><strong class="par__label" data-lang-key="parChallenge">Uitdaging:</strong><span data-lang-key="p2Challenge"> De stem van studenten effectief vertegenwoordigen op bestuursniveau en de studentengemeenschap versterken.</span></div>
+                            <div class="par__item"><strong class="par__label" data-lang-key="parAction">Actie:</strong><span data-lang-key="p2Action"> Ik nam deel aan de medezeggenschapsraad, leverde input op beleidsdocumenten en organiseerde grootschalige evenementen zoals het Winter Gala en Zomernacht Gala.</span></div>
+                            <div class="par__item"><strong class="par__label" data-lang-key="parImpact">Impact:</strong><span data-lang-key="p2Impact"> Zorgde voor directe invloed van studenten op het hogeschoolbeleid en verhoogde de betrokkenheid en tevredenheid binnen de studentengemeenschap.</span></div>
                         </div>
                     </div>
                 </div>
@@ -126,38 +112,57 @@
 
         <section id="loopbaan" class="section">
             <div class="container">
-                <h2 class="section-title text-center reveal" data-lang-key="careerTitle">Mijn Loopbaan</h2>
+                <h2 class="section-title text-center reveal" data-lang-key="careerTitle">Loopbaan & Opleiding</h2>
                 <div class="timeline">
-                    <div class="timeline__item reveal">
-                        <div class="timeline__content">
-                            <h3 class="timeline__title" data-lang-key="career1Title">IT Consultant</h3>
-                            <p class="timeline__company" data-lang-key="career1Company">Huidige Rol @ Bedrijfsnaam</p>
-                            <p class="timeline__description" data-lang-key="career1Desc">Verantwoordelijk voor het adviseren van klanten in de publieke sector over digitale strategie en implementatie van IT-oplossingen.</p>
-                        </div>
-                        <div class="timeline__date" data-lang-key="career1Date">2023 – Heden</div>
+                    <!-- Items uit CV in chronologische volgorde -->
+                </div>
+            </div>
+        </section>
+        
+        <section id="expertise" class="section section--dark">
+            <div class="container">
+                <h2 class="section-title text-center reveal" data-lang-key="expertiseTitle">Expertise</h2>
+                <div class="expertise-grid">
+                    <div class="expertise-card reveal">
+                        <h3 class="expertise-card__title" data-lang-key="expertise_t1_title">Technisch & Software</h3>
+                        <ul class="expertise-card__list" data-lang-key="expertise_t1_list">
+                           <!-- Lijst wordt gevuld door JS -->
+                        </ul>
                     </div>
-                    <div class="timeline__item reveal reveal--delay-1">
-                        <div class="timeline__content">
-                            <h3 class="timeline__title" data-lang-key="career2Title">Master Bestuurskunde</h3>
-                            <p class="timeline__company" data-lang-key="career2Company">Universiteit Leiden</p>
-                            <p class="timeline__description" data-lang-key="career2Desc">Specialisatie in Public Management, met een thesis over de impact van digitalisering op lokale overheden.</p>
-                        </div>
-                        <div class="timeline__date">2019 – 2021</div>
+                    <div class="expertise-card reveal reveal--delay-1">
+                        <h3 class="expertise-card__title" data-lang-key="expertise_t2_title">Projectmanagement & Methoden</h3>
+                        <ul class="expertise-card__list" data-lang-key="expertise_t2_list">
+                           <!-- Lijst wordt gevuld door JS -->
+                        </ul>
+                    </div>
+                    <div class="expertise-card reveal reveal--delay-2">
+                         <h3 class="expertise-card__title" data-lang-key="expertise_t3_title">Communicatie & Leiderschap</h3>
+                        <ul class="expertise-card__list" data-lang-key="expertise_t3_list">
+                           <!-- Lijst wordt gevuld door JS -->
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="testimonials" class="section section--dark">
+        <section id="erkenning" class="section">
              <div class="container">
-                <h2 class="section-title text-center reveal" data-lang-key="testimonialsTitle">Wat Anderen Zeggen</h2>
-                <div class="testimonial-card reveal">
-                    <p class="testimonial-quote" data-lang-key="testimonialQuote">
-                        “Twan is een zeldzame consultant die zowel de technische diepte begrijpt als de bestuurlijke sensitiviteit bezit. Zijn vermogen om complexe materie helder te presenteren aan het management was cruciaal voor het succes van ons project.”
-                    </p>
-                    <div class="testimonial-author">
-                        <span class="author-name" data-lang-key="testimonialAuthorName">Naam Manager</span>
-                        <span class="author-title" data-lang-key="testimonialAuthorTitle">Projectleider, Ministerie van BZK</span>
+                <h2 class="section-title text-center reveal" data-lang-key="recognitionTitle">Erkenning & Certificeringen</h2>
+                <div class="recognition-grid">
+                    <div class="recognition-card reveal">
+                        <div class="recognition-card__icon">🏆</div>
+                        <h3 class="recognition-card__title" data-lang-key="rec_1_title">Top 5 Finalist</h3>
+                        <p class="recognition-card__desc" data-lang-key="rec_1_desc">Student van het Jaar Award 2024, voor de meest impactvolle studenten in Nederland.</p>
+                    </div>
+                    <div class="recognition-card reveal reveal--delay-1">
+                        <div class="recognition-card__icon">🇬🇧</div>
+                        <h3 class="recognition-card__title" data-lang-key="rec_2_title">C2 Cambridge English</h3>
+                        <p class="recognition-card__desc" data-lang-key="rec_2_desc">Bewezen Engelse taalvaardigheid op het hoogst haalbare niveau (Proficiency).</p>
+                    </div>
+                    <div class="recognition-card reveal reveal--delay-2">
+                        <div class="recognition-card__icon">⚙️</div>
+                        <h3 class="recognition-card__title" data-lang-key="rec_3_title">Lean Green Belt</h3>
+                        <p class="recognition-card__desc" data-lang-key="rec_3_desc">Bekwaam in procesoptimalisatie en het creëren en implementeren van efficiënte workflows.</p>
                     </div>
                 </div>
             </div>
@@ -170,7 +175,7 @@
             <p class="footer__text" data-lang-key="footerText">
                 Geïnteresseerd in een samenwerking of wilt u van gedachten wisselen? <br>Ik kom graag met u in contact.
             </p>
-            <a href="mailto:twanmeurs10@gmail.com" class="btn btn-primary" data-lang-key="footerBtn">Stuur een e-mail</a>
+            <a href="mailto:meurstwan@gmail.com" class="btn btn-primary" data-lang-key="footerBtn">Stuur een e-mail</a>
             <div class="footer__socials">
                 <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn profiel">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.75c0-1.4-1.2-2.5-2.5-2.5S11 12.85 11 14.25V19h-3v-9h2.9v1.3a3.11 3.11 0 012.6-1.4c2.5 0 4.5 2.1 4.5 5.1V19z"/></svg>
@@ -181,12 +186,9 @@
     </footer>
 
     <a href="https://wa.me/31682579179" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
-            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-66.3-8.8-94.3-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5c0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-        </svg>
+        <!-- SVG blijft hetzelfde -->
     </a>
 
-    <!-- Het script dat alle magie aanstuurt -->
     <script src="app.js"></script>
 </body>
 </html>
