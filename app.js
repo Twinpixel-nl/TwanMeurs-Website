@@ -1,6 +1,6 @@
 /*
   APP.JS - State-of-the-Art Interacties & Vertalingen voor Twan Meurs
-  Versie: 5.0 (Final Content & Feature Lock)
+  Versie: 6.0 (Final - Inclusief Ripple Effect)
 */
 
 (() => {
@@ -149,6 +149,7 @@
      * INITIALISATIE
      */
     document.addEventListener('DOMContentLoaded', () => {
+        initClickRippleEffect(); // Nieuwe functie
         initLanguageSwitcher();
         initSmoothScrolling();
         initScrollAnimations();
@@ -156,6 +157,22 @@
         initParallax();
         initCustomCursor();
     });
+
+    /**
+     * FUNCTIE: KLIK GOLF-EFFECT (RIPPLE)
+     */
+    function initClickRippleEffect() {
+        document.addEventListener('click', (e) => {
+            const ripple = document.createElement('div');
+            ripple.classList.add('ripple');
+            document.body.appendChild(ripple);
+            ripple.style.left = `${e.clientX}px`;
+            ripple.style.top = `${e.clientY}px`;
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    }
 
     /**
      * FUNCTIE: TAALWISSELAAR
@@ -180,7 +197,6 @@
         document.documentElement.setAttribute('lang', lang);
         const data = languageData[lang] || languageData.nl;
 
-        // Vertalingen voor standaard elementen
         document.querySelectorAll('[data-lang-key]').forEach(el => {
             const key = el.getAttribute('data-lang-key');
             if (data[key]) {
@@ -196,10 +212,8 @@
             }
         });
         
-        // Dynamische content voor Tijdlijn
         updateTimeline(lang);
 
-        // Update active class op taalknoppen
         document.querySelectorAll('.lang-link').forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('data-lang') === lang) {
@@ -356,17 +370,7 @@
             requestAnimationFrame(followMouse);
         };
         followMouse();
-        document.body.addEventListener('mouseenter', (e) => {
-            if (e.target.closest(interactiveElements)) {
-                document.body.classList.add('cursor-grow');
-            }
-        });
-        document.body.addEventListener('mouseleave', (e) => {
-             if (e.target.closest(interactiveElements)) {
-                document.body.classList.remove('cursor-grow');
-            }
-        }, true);
-         document.body.addEventListener('mouseover', (e) => {
+        document.body.addEventListener('mouseover', (e) => {
             if (e.target.closest(interactiveElements)) {
                 document.body.classList.add('cursor-grow');
             } else {

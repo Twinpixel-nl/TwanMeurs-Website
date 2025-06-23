@@ -320,3 +320,35 @@ button,
     /* Behoudt de elegante, staande verhouding van de placeholder */
     aspect-ratio: 1 / 1.1; 
 }
+/* Plak dit in je styles.css */
+
+/* ======== 10. KLIK GOLF-EFFECT (RIPPLE) ======== */
+.ripple {
+  position: fixed; /* Positie t.o.v. het scherm, niet de pagina */
+  border-radius: 50%;
+  
+  /* Gecentreerd op de klik, niet de linkerbovenhoek */
+  transform: translate(-50%, -50%);
+  
+  /* Belangrijk: de rimpel mag zelf niet klikbaar zijn */
+  pointer-events: none; 
+  
+  /* Start de animatie 'ripple-effect' die 0.6s duurt */
+  animation: ripple-effect 0.6s linear;
+  
+  /* Stijl van de golf: een rand in de accentkleur */
+  border: 2px solid var(--color-accent);
+}
+
+@keyframes ripple-effect {
+  from {
+    /* Begin als een kleine, volledig zichtbare cirkel */
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  to {
+    /* Eindig als een grote, onzichtbare cirkel */
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
