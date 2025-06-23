@@ -210,3 +210,13 @@ body.cursor-grow .cursor-follower {
     background-color: rgba(177, 0, 0, 0.2);
     border: 1px solid rgba(177, 0, 0, 0.5);
 }
+/* Plak dit in je styles.css */
+
+/* ======== CURSOR FIX: Verberg het 'handje' op links/knoppen ======== */
+a,
+.btn,
+button,
+.timeline__content,
+.case-study {
+  cursor: none;
+}
