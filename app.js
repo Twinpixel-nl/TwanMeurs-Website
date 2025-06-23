@@ -135,8 +135,9 @@
             posX += (mouseX - posX) * 0.2;
             posY += (mouseY - posY) * 0.2;
             
-            cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-            follower.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
+// NIEUWE, GECORRIGEERDE CODE
+cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
             
             requestAnimationFrame(followMouse);
         };
