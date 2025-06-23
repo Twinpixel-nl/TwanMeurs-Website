@@ -28,10 +28,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+<div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
     <header class="header">
         <div class="container header__container">
             <a href="#home" class="header__logo">Twan Meurs</a>
@@ -51,22 +53,23 @@
 
     <main>
         <section id="home" class="hero">
+            <div class="hero__bg"></div>
             <div class="container hero__content">
-                <h1 class="hero__title animate-fade-in-up">
+                <h1 class="hero__title reveal reveal--delay-0">
                     Bruggenbouwer tussen IT-potentieel
                     <span class="text-accent">en bestuurlijke realiteit.</span>
                 </h1>
-                <p class="hero__subtitle animate-fade-in-up" style="animation-delay: 0.2s;">
+                <p class="hero__subtitle reveal reveal--delay-1">
                     Ik vertaal complexe technologie naar heldere, strategische beslissingen die organisaties vooruithelpen.
                 </p>
-                <a href="#projecten" class="btn btn-primary animate-fade-in-up" style="animation-delay: 0.4s;">Bekijk mijn projecten</a>
+                <a href="#projecten" class="btn btn-primary reveal reveal--delay-2">Bekijk mijn projecten</a>
             </div>
             <a href="#over" class="scroll-down-indicator" aria-label="Scroll naar beneden"></a>
         </section>
 
         <section id="over" class="section">
             <div class="container grid-2-col">
-                <div class="about__text">
+                <div class="about__text reveal">
                     <h2 class="section-title">Mijn Aanpak</h2>
                     <h3 class="section-subtitle">Gedreven door resultaat, geleid door verbinding.</h3>
                     <p>
@@ -76,7 +79,7 @@
                         Mijn analytische blik, aangescherpt door een passie voor strategische bordspellen, helpt me om systemen en processen snel te doorzien. De discipline en het doorzettingsvermogen van het wielrennen pas ik toe op langdurige transformatieprojecten: met focus, stapsgewijs, en altijd met het einddoel voor ogen.
                     </p>
                 </div>
-                <div class="about__image-container">
+                <div class="about__image-container reveal reveal--delay-1">
                     <div class="about__image-placeholder" title="Professioneel omgevingsportret van Twan Meurs">
                         <p>Professioneel Omgevingsportret</p>
                     </div>
@@ -86,10 +89,10 @@
 
         <section id="projecten" class="section section--dark">
             <div class="container">
-                <h2 class="section-title text-center">Uitgelichte Projecten</h2>
+                <h2 class="section-title text-center reveal">Uitgelichte Projecten</h2>
                 <div class="case-study-grid">
                     <!-- Case Study 1 -->
-                    <div class="case-study animate-fade-in-up">
+                    <div class="case-study reveal">
                         <header class="case-study__header">
                             <h3 class="case-study__title">Digitale Transformatie Publieke Dienstverlening</h3>
                             <p class="case-study__client">Klant: Ministerie van BZK</p>
@@ -111,7 +114,7 @@
                         </div>
                     </div>
                     <!-- Case Study 2 -->
-                    <div class="case-study animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="case-study reveal reveal--delay-1">
                         <header class="case-study__header">
                             <h3 class="case-study__title">Implementatie van een CRM-Systeem</h3>
                             <p class="case-study__client">Klant: Top 10 Consultancy Firm</p>
@@ -138,10 +141,9 @@
 
         <section id="loopbaan" class="section">
             <div class="container">
-                <h2 class="section-title text-center">Mijn Loopbaan</h2>
+                <h2 class="section-title text-center reveal">Mijn Loopbaan</h2>
                 <div class="timeline">
-                    <!-- Items blijven hetzelfde, structuur is al goed -->
-                    <div class="timeline__item">
+                    <div class="timeline__item reveal">
                         <div class="timeline__content">
                             <h3 class="timeline__title">IT Consultant</h3>
                             <p class="timeline__company">Huidige Rol @ Bedrijfsnaam</p>
@@ -149,7 +151,7 @@
                         </div>
                         <div class="timeline__date">2023 – Heden</div>
                     </div>
-                    <div class="timeline__item">
+                    <div class="timeline__item reveal reveal--delay-1">
                         <div class="timeline__content">
                             <h3 class="timeline__title">Master Bestuurskunde</h3>
                             <p class="timeline__company">Universiteit Leiden</p>
@@ -163,8 +165,8 @@
 
         <section id="testimonials" class="section section--dark">
              <div class="container">
-                <h2 class="section-title text-center">Wat Anderen Zeggen</h2>
-                <div class="testimonial-card">
+                <h2 class="section-title text-center reveal">Wat Anderen Zeggen</h2>
+                <div class="testimonial-card reveal">
                     <p class="testimonial-quote">
                         “Twan is een zeldzame consultant die zowel de technische diepte begrijpt als de bestuurlijke sensitiviteit bezit. Zijn vermogen om complexe materie helder te presenteren aan het management was cruciaal voor het succes van ons project.”
                     </p>
@@ -175,7 +177,6 @@
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer id="contact" class="footer">
@@ -200,8 +201,7 @@
         </svg>
     </a>
 
-    <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
+    <!-- HET SCRIPT DAT DE ANIMATIES AANSTUURT -->
+    <script src="app.js"></script>
 </body>
 </html>

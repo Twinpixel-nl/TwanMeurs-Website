@@ -1,6 +1,6 @@
 /*
   STYLESHEET VOOR TWAN MEURS - PERSOONLIJKE WEBSITE
-  Versie: 3.0 (Expert-editie)
+  Versie: 4.0 (State-of-the-Art editie)
 */
 
 /* ======== 1. ALGEMENE STIJLEN & VARIABELEN ======== */
@@ -21,11 +21,13 @@
   --header-height: 80px;
   --transition-fast: 0.2s ease-in-out;
   --transition-medium: 0.4s ease-in-out;
+  --transition-slow: 0.8s;
+  --reveal-easing: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); font-size: 100%; }
-body { font-family: var(--font-primary); background-color: var(--color-background); color: var(--color-text-medium); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+body { overflow-x: hidden; font-family: var(--font-primary); background-color: var(--color-background); color: var(--color-text-medium); line-height: 1.7; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, h4, h5, h6 { font-family: var(--font-secondary); color: var(--color-text-light); line-height: 1.2; font-weight: 700; }
 p { margin-bottom: 1rem; }
 a { color: var(--color-accent); text-decoration: none; transition: color var(--transition-fast); }
@@ -50,11 +52,12 @@ a:hover { color: var(--color-accent-hover); }
 .lang-separator { color: var(--color-border); }
 
 /* ======== 3. HERO SECTIE ======== */
-.hero { height: 100vh; min-height: 700px; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: var(--header-height); }
+.hero { height: 100vh; min-height: 700px; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; padding-top: var(--header-height); color: var(--color-text-light); }
+.hero__bg { position: absolute; top: -10vh; left: 0; width: 100%; height: 120vh; z-index: -1; background: linear-gradient(rgba(15, 15, 15, 0.8), var(--color-background)), url('https://images.unsplash.com/photo-1554224155-8d04421cd6e2?q=80&w=2072&auto=format&fit=crop') no-repeat center center/cover; }
 .hero__content { max-width: 800px; }
 .hero__title { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 1rem; }
 .hero__subtitle { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--color-text-medium); margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-.scroll-down-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); width: 24px; height: 40px; border: 2px solid var(--color-text-medium); border-radius: 20px; }
+.scroll-down-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); width: 24px; height: 40px; border: 2px solid var(--color-text-medium); border-radius: 20px; opacity: 0.7; }
 .scroll-down-indicator::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 4px; height: 8px; background-color: var(--color-text-medium); border-radius: 2px; animation: scroll-anim 2s infinite; }
 @keyframes scroll-anim { 0% { opacity: 1; top: 8px; } 50% { opacity: 0; top: 20px; } 100% { opacity: 1; top: 8px; } }
 
@@ -70,14 +73,11 @@ a:hover { color: var(--color-accent-hover); }
 .grid-2-col { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
 
 /* ======== 5. SPECIFIEKE SECTIES ======== */
-
-/* --- Over Mij (Mijn Aanpak) --- */
 .about__image-placeholder { width: 100%; max-width: 400px; aspect-ratio: 1 / 1.1; background-color: var(--color-border); display: flex; justify-content: center; align-items: center; color: var(--color-text-dark); font-style: italic; border-radius: 5px; }
 
-/* --- Case Study Sectie (Uitgelichte Projecten) --- */
 .case-study-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 4rem; }
-.case-study { background-color: var(--color-background-card); border: 1px solid var(--color-border); border-radius: 8px; padding: 2.5rem; display: flex; flex-direction: column; gap: 2rem; transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
-.case-study:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.case-study { background-color: var(--color-background-card); border: 1px solid var(--color-border); border-radius: 8px; padding: 2.5rem; display: flex; flex-direction: column; gap: 2rem; transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast); }
+.case-study:hover { transform: translateY(-8px); box-shadow: 0 0 30px rgba(177, 0, 0, 0.2), 0 10px 20px rgba(0,0,0,0.2); border-color: var(--color-accent); }
 .case-study__title { font-size: 1.5rem; margin-bottom: 0.5rem; }
 .case-study__client { font-family: var(--font-primary); color: var(--color-text-medium); font-weight: 500; margin-bottom: 1rem; }
 .case-study__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -86,20 +86,20 @@ a:hover { color: var(--color-accent-hover); }
 .par__item { border-left: 3px solid var(--color-border); padding-left: 1rem; }
 .par__label { display: block; color: var(--color-text-light); font-weight: 700; margin-bottom: 0.25rem; }
 
-/* --- Loopbaan (Tijdlijn) --- */
 .timeline { position: relative; max-width: 700px; margin: 4rem auto 0; padding-left: 2rem; }
 .timeline::before { content: ''; position: absolute; top: 10px; left: 0; width: 2px; height: calc(100% - 10px); background-color: var(--color-border); }
 .timeline__item { position: relative; padding-bottom: 3rem; }
 .timeline__item:last-child { padding-bottom: 0; }
-.timeline__item::before { content: ''; position: absolute; top: 10px; left: -2.7rem; width: 14px; height: 14px; border-radius: 50%; background-color: var(--color-accent); border: 3px solid var(--color-background); z-index: 1; }
+.timeline__item:hover::before { transform: scale(1.5); }
+.timeline__item::before { content: ''; position: absolute; top: 10px; left: -2.7rem; width: 14px; height: 14px; border-radius: 50%; background-color: var(--color-accent); border: 3px solid var(--color-background); z-index: 1; transition: transform var(--transition-fast); }
 .timeline__content { background-color: var(--color-background-card); padding: 1.5rem; border-radius: 5px; border: 1px solid var(--color-border); transition: transform var(--transition-fast), box-shadow var(--transition-fast); }
-.timeline__content:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.timeline__content:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.25); }
 .timeline__title { font-size: 1.25rem; }
 .timeline__company { color: var(--color-text-medium); margin-bottom: 1rem; }
 .timeline__description { font-size: 0.95rem; margin-bottom: 0; }
 .timeline__date { position: absolute; top: 5px; right: 0; font-weight: 700; color: var(--color-text-dark); }
+.section--dark .timeline__item::before { border-color: var(--color-background-dark); } /* Fix voor donkere achtergrond */
 
-/* --- Testimonials --- */
 .testimonial-card { background-color: var(--color-background-card); border-left: 4px solid var(--color-accent); padding: 2.5rem; max-width: 800px; margin: 4rem auto 0; border-radius: 0 5px 5px 0; }
 .testimonial-quote { font-size: 1.1rem; font-style: italic; color: var(--color-text-light); margin-bottom: 2rem; }
 .testimonial-author { text-align: right; }
@@ -121,9 +121,20 @@ a:hover { color: var(--color-accent-hover); }
 .whatsapp-btn:hover { transform: scale(1.1); background-color: #21b85b; }
 .whatsapp-btn svg { width: 32px; height: 32px; fill: white; }
 
-/* ======== 8. ANIMATIES ======== */
-@keyframes fade-in-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-.animate-fade-in-up { animation: fade-in-up 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards; opacity: 0; }
+/* ======== 8. ANIMATIE SYSTEEM ======== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--transition-slow) var(--reveal-easing), transform var(--transition-slow) var(--reveal-easing);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal--delay-0 { transition-delay: 0s; }
+.reveal--delay-1 { transition-delay: 150ms; }
+.reveal--delay-2 { transition-delay: 300ms; }
+.reveal--delay-3 { transition-delay: 450ms; }
 
 /* ======== 9. RESPONSIVITEIT ======== */
 @media (max-width: 768px) {
@@ -139,4 +150,63 @@ a:hover { color: var(--color-accent-hover); }
   .about__text { order: 1; }
   .about__image-container { order: 2; }
   .case-study-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Plak dit in je styles.css, bijvoorbeeld aan het einde of bij de relevante secties */
+
+/* ======== AANPASSINGEN VOOR ACTIEVE NAVIGATIE ======== */
+
+.nav-link.active {
+  color: var(--color-text-light); /* Maak de actieve link helderder */
+}
+.nav-link.active::after {
+  width: 100%; /* Zorg ervoor dat de onderlijn permanent zichtbaar is */
+}
+
+
+/* ======== STIJLEN VOOR DE CUSTOM CURSOR ======== */
+
+/* Verberg de standaard cursor op de hele pagina */
+body {
+    cursor: none;
+}
+
+/* Stijl voor de custom cursor elementen */
+.cursor, .cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Zorg ervoor dat de cursor niet klikbaar is */
+    border-radius: 50%;
+    z-index: 9999;
+    background-color: var(--color-accent);
+    transition: transform 0.2s ease-out, opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+/* De kleine stip die de muis direct volgt */
+.cursor {
+    width: 8px;
+    height: 8px;
+    transform: translate(-50%, -50%); /* Centreer de stip op de muispositie */
+}
+
+/* De grotere cirkel die met een lichte vertraging volgt */
+.cursor-follower {
+    width: 30px;
+    height: 30px;
+    background-color: rgba(177, 0, 0, 0.3); /* Maak de volger semi-transparant */
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                opacity 0.3s ease, width 0.4s ease, height 0.4s ease;
+}
+
+/* De 'grow' state wanneer over een link of knop wordt gehoverd */
+body.cursor-grow .cursor {
+    opacity: 0; /* Verberg de stip */
+}
+body.cursor-grow .cursor-follower {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(177, 0, 0, 0.2);
+    border: 1px solid rgba(177, 0, 0, 0.5);
 }
