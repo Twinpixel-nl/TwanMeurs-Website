@@ -1,171 +1,6 @@
 /*
-  APP.JS - State-of-the-Art Interacties voor Twan Meurs
-  Versie: 2.0
-*/
-
-(() => {
-    'use strict';
-
-    /**
-     * INITIALISATIE
-     * Wacht tot de DOM volledig is geladen en roept dan alle functies aan.
-     */
-    document.addEventListener('DOMContentLoaded', () => {
-        initSmoothScrolling();
-        initScrollAnimations();
-        initActiveNavOnScroll();
-        initParallax();
-        initCustomCursor();
-        updateFooterYear();
-    });
-
-
-    /**
-     * FUNCTIE: SOEPEL SCROLLEN (SMOOTH SCROLLING)
-     * Vangt klikken op ankerlinks op en scrollt soepel naar de sectie.
-     */
-    function initSmoothScrolling() {
-        const navLinks = document.querySelectorAll('a[href^="#"]');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    }
-
-
-    /**
-     * FUNCTIE: SCROLL-TRIGGERED ANIMATIONS
-     * Gebruikt Intersection Observer om elementen in te faden wanneer ze in beeld komen.
-     */
-    function initScrollAnimations() {
-        const elementsToReveal = document.querySelectorAll('.reveal');
-        if (!elementsToReveal.length) return;
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        elementsToReveal.forEach(element => observer.observe(element));
-    }
-
-
-    /**
-     * FUNCTIE: ACTIEVE NAVIGATIESTATUS BIJ SCROLLEN
-     * Markeer de navigatielink die overeenkomt met de zichtbare sectie.
-     */
-    function initActiveNavOnScroll() {
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.header__nav a');
-        if (!sections.length || !navLinks.length) return;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href').substring(1) === entry.target.id) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }, { rootMargin: '-50% 0px -50% 0px' }); // Activeert wanneer een sectie in het midden van het scherm is
-
-        sections.forEach(section => observer.observe(section));
-    }
-
-
-    /**
-     * FUNCTIE: GEOPTIMALISEERD PARALLAX EFFECT
-     * Gebruikt requestAnimationFrame voor een soepele, performante parallax animatie.
-     */
-    function initParallax() {
-        const heroBg = document.querySelector('.hero__bg');
-        if (!heroBg) return;
-
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const scrollValue = window.scrollY;
-                    const parallaxFactor = 0.3;
-                    // Belangrijke fix: gebruik backticks (`) voor template literals
-                    heroBg.style.transform = `translateY(${scrollValue * parallaxFactor}px)`;
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    }
-
-
-    /**
-     * FUNCTIE: CUSTOM CURSOR
-     * Creëert een custom cursor die de muis volgt en reageert op interactieve elementen.
-     */
-    function initCustomCursor() {
-        const cursor = document.querySelector('.cursor');
-        const follower = document.querySelector('.cursor-follower');
-        const interactiveElements = document.querySelectorAll('a, .btn, button, .timeline__content, .case-study');
-
-        if (!cursor || !follower) return;
-
-        let posX = 0, posY = 0;
-        let mouseX = 0, mouseY = 0;
-
-        window.addEventListener('mousemove', e => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        const followMouse = () => {
-            posX += (mouseX - posX) * 0.2;
-            posY += (mouseY - posY) * 0.2;
-            
-// NIEUWE, GECORRIGEERDE CODE
-cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
-            
-            requestAnimationFrame(followMouse);
-        };
-        
-        followMouse();
-
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-grow'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-grow'));
-        });
-    }
-
-
-    /**
-     * FUNCTIE: DYNAMISCH JAARTAL IN FOOTER
-     */
-    function updateFooterYear() {
-        const yearSpan = document.getElementById('current-year');
-        if (yearSpan) {
-            yearSpan.textContent = new Date().getFullYear();
-        }
-    }
-
-})();
-
-/*
   APP.JS - State-of-the-Art Interacties & Vertalingen voor Twan Meurs
-  Versie: 4.0 (CV Content Update)
+  Versie: 5.0 (Final Content & Feature Lock)
 */
 
 (() => {
@@ -173,6 +8,7 @@ follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%,
 
     /**
      * HET WOORDENBOEK
+     * Bevat alle vertalingen. De sleutels komen exact overeen met de `data-lang-key` attributen in de HTML.
      */
     const languageData = {
         nl: {
@@ -196,7 +32,7 @@ follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%,
             aboutSubtitle: "Gedreven door resultaat, geleid door verbinding.",
             aboutP1: "Op het snijvlak van technologie en organisatie voel ik mij thuis. Mijn kracht ligt in het doorgronden van complexe bestuurlijke vraagstukken en deze te vertalen naar concrete, technologische oplossingen die écht werken. Ik geloof niet in IT om de IT; ik geloof in IT als strategische motor voor vooruitgang.",
             aboutP2: "Mijn analytische blik, aangescherpt door een passie voor strategische bordspellen, helpt me om systemen en processen snel te doorzien. De discipline en het doorzettingsvermogen van het wielrennen pas ik toe op langdurige transformatieprojecten: met focus, stapsgewijs, en altijd met het einddoel voor ogen.",
-            aboutImage: "Professioneel Omgevingsportret",
+            aboutImageAlt: "Professioneel portret van Twan Meurs",
 
             // Projecten
             projectsTitle: "Uitgelichte Projecten",
@@ -216,26 +52,15 @@ follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%,
 
             // Loopbaan & Opleiding
             careerTitle: "Loopbaan & Opleiding",
-            timeline: `
-                <div class="timeline__item reveal">
-                    <div class="timeline__content"><h3 class="timeline__title">Medeoprichter – TwinPixel Webdesign & IT-advies</h3><p class="timeline__description">Kleinschalig bureau gestart voor het ontwikkelen van moderne websites (HTML, CSS, JS, SEO) en het realiseren van functies als chatbotintegratie en meertalige ondersteuning.</p></div><div class="timeline__date">maart 2025 – Heden</div>
-                </div>
-                <div class="timeline__item reveal"><div class="timeline__content"><h3 class="timeline__title">Lid – Studentenhogeschoolraad van de CHE</h3><p class="timeline__description">Vertegenwoordig studenten op centraal niveau binnen de medezeggenschap en denk actief mee over strategisch beleid, huisvesting en begrotingen.</p></div><div class="timeline__date">maart 2025 – Heden</div></div>
-                <div class="timeline__item reveal"><div class="timeline__content"><h3 class="timeline__title">Service Consultant</h3><p class="timeline__company">Wageningse Universiteit</p><p class="timeline__description">Modelleren en verbeteren van IT-processen, opstellen van adviesrapporten en inventariseren van audiovisuele middelen.</p></div><div class="timeline__date">oktober 2024 – Heden</div></div>
-                <div class="timeline__item reveal"><div class="timeline__content"><h3 class="timeline__title">Voorzitter – Jongerenraad Wageningen</h3><p class="timeline__description">Adviseer de gemeente over jongerenbeleid, zet een nieuwe structuur op en bevorder de communicatie tussen jongeren en gemeentelijke besluitvorming.</p></div><div class="timeline__date">oktober 2024 – Heden</div></div>
-                <div class="timeline__item reveal"><div class="timeline__content"><h3 class="timeline__title">Student Assessor</h3><p class="timeline__company">Christelijke Hogeschool Ede</p><p class="timeline__description">Vertegenwoordigde studenten op bestuursniveau, leidde projecten, bevorderde duurzaamheid en organiseerde grote evenementen.</p></div><div class="timeline__date">april 2023 – januari 2024</div></div>
-                <div class="timeline__item reveal"><div class="timeline__content"><h3 class="timeline__title">Voorzitter & Oprichter – S.V. NULL (Studievereniging ICT)</h3><p class="timeline__description">Vereniging opgericht voor en door ICT-studenten, bestuur geleid en 35% van de opleiding betrokken als actief lid.</p></div><div class="timeline__date">september 2022 – augustus 2024</div></div>
-                <div class="timeline__item reveal"><div class="timeline__content"><h3 class="timeline__title">BA IT – Christelijke Hogeschool Ede</h3><p class="timeline__company">Specialisatie: IT-Consultancy</p><p class="timeline__description">Brede basis in Development & UX-design. Leiding gegeven aan stageprojecten voor de implementatie van HubSpot en een ERP PowerApps-oplossing.</p></div><div class="timeline__date">september 2022 – Heden</div></div>
-            `,
             
             // Expertise
             expertiseTitle: "Expertise",
             expertise_t1_title: "Technisch & Software",
-            expertise_t1_list: `<li>Python, SQL, C#, Golang</li><li>HTML, CSS, Javascript</li><li>Power BI, PowerApps, HubSpot</li><li>Word, PowerPoint, Excel</li>`,
+            expertise_t1_list: `<li>Python, SQL, C#, Golang, HTML, CSS, Javascript</li><li>Power BI, PowerApps, HubSpot</li><li>Word, PowerPoint, Excel</li>`,
             expertise_t2_title: "Projectmanagement & Methoden",
-            expertise_t2_list: `<li>Agile, Scrum</li><li>Beleidsanalyse, Onderzoek</li><li>Procesoptimalisatie (Lean)</li><li>Tijdsmanagement</li>`,
+            expertise_t2_list: `<li>Agile, Scrum</li><li>Beleidsanalyse, Onderzoek</li><li>Procesoptimalisatie (Lean Green Belt)</li><li>Tijdsmanagement</li>`,
             expertise_t3_title: "Communicatie & Leiderschap",
-            expertise_t3_list: `<li>Teamleiderschap</li><li>Publiek Spreken & Presenteren</li><li>Stakeholdermanagement</li><li>Conflictoplossing</li>`,
+            expertise_t3_list: `<li>Teamleiderschap & Samenwerking</li><li>Publiek Spreken & Presenteren</li><li>Stakeholdermanagement</li><li>Conflictoplossing</li>`,
 
             // Erkenning
             recognitionTitle: "Erkenning & Certificeringen",
@@ -253,28 +78,57 @@ follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%,
             footerCopyright: "© <span id=\"current-year\"></span> Twan Meurs. Alle rechten voorbehouden."
         },
         en: {
-            // English translations...
+            // Meta & Navigation
+            metaTitle: "Twan Meurs – Building Bridges between IT & Governance",
+            metaDescription: "Twan Meurs translates complex technology into strategic governance decisions. View my projects and discover how I connect IT potential with administrative reality.",
+            ogDescription: "I help governmental organizations and leading companies move forward by connecting technology with strategy.",
+            navAbout: "About Me",
+            navProjects: "Projects",
             navCareer: "Career & Education",
             navExpertise: "Expertise",
+            navContact: "Contact",
+
+            // Hero
+            heroTitle: `Building bridges between IT potential <span class="text-accent">and administrative reality.</span>`,
+            heroSubtitle: "I translate complex technology into clear, strategic decisions that help organizations advance.",
+            heroBtn: "View my projects",
+
+            // About Me
+            aboutTitle: "My Approach",
+            aboutSubtitle: "Driven by results, guided by connection.",
+            aboutP1: "I feel at home at the intersection of technology and organization. My strength lies in understanding complex administrative issues and translating them into concrete, technological solutions that truly work. I don't believe in IT for IT's sake; I believe in IT as a strategic engine for progress.",
+            aboutP2: "My analytical perspective, sharpened by a passion for strategic board games, helps me to quickly grasp systems and processes. I apply the discipline and perseverance from cycling to long-term transformation projects: with focus, step-by-step, and always with the end goal in mind.",
+            aboutImageAlt: "Professional portrait of Twan Meurs",
+
+            // Projects
+            projectsTitle: "Featured Projects",
+            parChallenge: "Challenge:",
+            parAction: "Action:",
+            parImpact: "Impact:",
+            p1Title: "Process Optimization & Advisory",
+            p1Client: "Role: Service Consultant @ Wageningen University",
+            p1Challenge: " The need to improve various IT processes within the university and to utilize available resources more effectively.",
+            p1Action: " I modeled existing processes, drafted concrete advisory reports for the IT department, and inventoried the complete audio-visual infrastructure.",
+            p1Impact: " Directly contributed to the efficiency of the IT department and created a clear strategic overview for future investments and improvements.",
+            p2Title: "Administrative Representation & Event Management",
+            p2Client: "Role: Student Assessor @ CHE University of Applied Sciences",
+            p2Challenge: " To effectively represent the student voice at the administrative level and to strengthen the student community.",
+            p2Action: " I participated in the co-determination council, provided input on policy documents, and organized large-scale events such as the Winter Gala and Summer Night Gala.",
+            p2Impact: " Ensured direct student influence on university policy and increased engagement and satisfaction within the student community.",
+
+            // Career & Education
             careerTitle: "Career & Education",
-            timeline: `
-                <div class="timeline__item reveal">
-                    <div class="timeline__content"><h3 class="timeline__title">Co-founder – TwinPixel Webdesign & IT-advice</h3><p class="timeline__description">Started a small-scale agency for developing modern websites (HTML, CSS, JS, SEO) and implementing features like chatbot integration and multilingual support.</p></div><div class="timeline__date">March 2025 – Present</div>
-                </div>
-                <div class="timeline__item reveal"><div class="timeline__content"><h3 class="timeline__title">Member – CHE Student Council</h3><p class="timeline__description">Representing students at a central level in the university's participatory bodies and actively contributing to strategic policy, housing, and budgets.</p></div><div class="timeline__date">March 2025 – Present</div></div>
-                <div class="timeline__item reveal"><div class="timeline__content"><h3 class="timeline__title">Service Consultant</h3><p class="timeline__company">Wageningen University</p><p class="timeline__description">Modeling and improving IT processes, drafting advisory reports, and inventorying audio-visual resources.</p></div><div class="timeline__date">October 2024 – Present</div></div>
-                <div class="timeline__item reveal"><div class="timeline__content"><h3 class="timeline__title">Chairman – Wageningen Youth Council</h3><p class="timeline__description">Advising the municipality on youth policy, establishing a new structure, and promoting communication between youth and municipal decision-making.</p></div><div class="timeline__date">October 2024 – Present</div></div>
-                <div class="timeline__item reveal"><div class="timeline__content"><h3 class="timeline__title">Student Assessor</h3><p class="timeline__company">CHE University of Applied Sciences</p><p class="timeline__description">Represented students at the executive level, led projects, promoted sustainability, and organized large-scale events.</p></div><div class="timeline__date">April 2023 – January 2024</div></div>
-                <div class="timeline__item reveal"><div class="timeline__content"><h3 class="timeline__title">Chairman & Founder – S.V. NULL (ICT Study Association)</h3><p class="timeline__description">Established an association for and by ICT students, led the board, and managed to involve 35% of the entire study program as active members.</p></div><div class="timeline__date">September 2022 – August 2024</div></div>
-                <div class="timeline__item reveal"><div class="timeline__content"><h3 class="timeline__title">BA IT – CHE University of Applied Sciences</h3><p class="timeline__company">Specialization: IT Consultancy</p><p class="timeline__description">Broad foundation in Development & UX design. Led internship projects for the implementation of HubSpot and an ERP PowerApps solution.</p></div><div class="timeline__date">September 2022 – Present</div></div>
-            `,
+
+            // Expertise
             expertiseTitle: "Expertise",
             expertise_t1_title: "Technical & Software",
-            expertise_t1_list: `<li>Python, SQL, C#, Golang</li><li>HTML, CSS, Javascript</li><li>Power BI, PowerApps, HubSpot</li><li>Word, PowerPoint, Excel</li>`,
+            expertise_t1_list: `<li>Python, SQL, C#, Golang, HTML, CSS, Javascript</li><li>Power BI, PowerApps, HubSpot</li><li>Word, PowerPoint, Excel</li>`,
             expertise_t2_title: "Project Management & Methods",
-            expertise_t2_list: `<li>Agile, Scrum</li><li>Policy Analysis, Research</li><li>Process Optimization (Lean)</li><li>Time Management</li>`,
+            expertise_t2_list: `<li>Agile, Scrum</li><li>Policy Analysis, Research</li><li>Process Optimization (Lean Green Belt)</li><li>Time Management</li>`,
             expertise_t3_title: "Communication & Leadership",
-            expertise_t3_list: `<li>Team Leadership</li><li>Public Speaking & Presenting</li><li>Stakeholder Management</li><li>Conflict Resolution</li>`,
+            expertise_t3_list: `<li>Team Leadership & Collaboration</li><li>Public Speaking & Presenting</li><li>Stakeholder Management</li><li>Conflict Resolution</li>`,
+            
+            // Recognition
             recognitionTitle: "Recognition & Certifications",
             rec_1_title: "Top 5 Finalist",
             rec_1_desc: "Student of the Year Award 2024, for the most impactful students in the Netherlands.",
@@ -282,15 +136,15 @@ follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%,
             rec_2_desc: "Proven English language proficiency at the highest achievable level (Proficiency).",
             rec_3_title: "Lean Green Belt",
             rec_3_desc: "Skilled in process optimization and creating and implementing efficient workflows.",
-            // Other EN translations...
+
+            // Footer
+            footerTitle: "Let's connect.",
+            footerText: "Interested in a collaboration or would you like to exchange ideas? <br>I would be happy to get in touch with you.",
+            footerBtn: "Send an email",
+            footerCopyright: "© <span id=\"current-year\"></span> Twan Meurs. All rights reserved."
         }
     };
-    
-    // De rest van het app.js script blijft ONGEWIJZIGD!
-    // ...
-    // Plak de rest van het vorige app.js script hieronder.
-    // ...
-    
+
     /**
      * INITIALISATIE
      */
@@ -301,7 +155,6 @@ follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%,
         initActiveNavOnScroll();
         initParallax();
         initCustomCursor();
-        updateFooterYear();
     });
 
     /**
@@ -327,23 +180,26 @@ follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%,
         document.documentElement.setAttribute('lang', lang);
         const data = languageData[lang] || languageData.nl;
 
+        // Vertalingen voor standaard elementen
         document.querySelectorAll('[data-lang-key]').forEach(el => {
             const key = el.getAttribute('data-lang-key');
             if (data[key]) {
-                // Speciale behandeling voor de dynamische tijdlijn
-                if (key === 'timeline') {
-                    document.querySelector('.timeline').innerHTML = data[key];
-                    // Her-initialiseer de animaties voor de nieuwe tijdlijn-items
-                    initScrollAnimationsForTimeline(); 
+                const content = data[key];
+                if (key.endsWith('Alt')) {
+                    el.setAttribute('alt', content);
                 } else if (el.tagName === 'META' || el.tagName === 'TITLE') {
-                    if (el.tagName === 'TITLE') el.textContent = data[key];
-                    else el.setAttribute('content', data[key]);
+                    if (el.tagName === 'TITLE') el.textContent = content;
+                    else el.setAttribute('content', content);
                 } else {
-                    el.innerHTML = data[key];
+                    el.innerHTML = content;
                 }
             }
         });
+        
+        // Dynamische content voor Tijdlijn
+        updateTimeline(lang);
 
+        // Update active class op taalknoppen
         document.querySelectorAll('.lang-link').forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('data-lang') === lang) {
@@ -355,12 +211,44 @@ follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%,
     }
     
     /**
-     * Hulpfunctie om animaties opnieuw toe te passen na taalwissel
+     * Hulpfunctie om de tijdlijn dynamisch te vullen
      */
+    function updateTimeline(lang) {
+        const timelineContainer = document.querySelector('.timeline');
+        if (!timelineContainer) return;
+        
+        const timelineData = [
+            { nl: { title: "Medeoprichter – TwinPixel Webdesign & IT-advies", desc: "Kleinschalig bureau gestart voor het ontwikkelen van moderne websites (HTML, CSS, JS, SEO) en het realiseren van functies als chatbotintegratie en meertalige ondersteuning.", date: "maart 2025 – Heden" }, en: { title: "Co-founder – TwinPixel Webdesign & IT-advice", desc: "Started a small-scale agency for developing modern websites (HTML, CSS, JS, SEO) and implementing features like chatbot integration and multilingual support.", date: "March 2025 – Present" }},
+            { nl: { title: "Lid – Studentenhogeschoolraad van de CHE", desc: "Vertegenwoordig studenten op centraal niveau binnen de medezeggenschap en denk actief mee over strategisch beleid, huisvesting en begrotingen.", date: "maart 2025 – Heden" }, en: { title: "Member – CHE Student Council", desc: "Representing students at a central level in the university's participatory bodies and actively contributing to strategic policy, housing, and budgets.", date: "March 2025 – Present" }},
+            { nl: { title: "Service Consultant", company: "Wageningse Universiteit", desc: "Modelleren en verbeteren van IT-processen, opstellen van adviesrapporten en inventariseren van audiovisuele middelen.", date: "oktober 2024 – Heden" }, en: { title: "Service Consultant", company: "Wageningen University", desc: "Modeling and improving IT processes, drafting advisory reports, and inventorying audio-visual resources.", date: "October 2024 – Present" }},
+            { nl: { title: "Voorzitter – Jongerenraad Wageningen", desc: "Adviseer de gemeente over jongerenbeleid, zet een nieuwe structuur op en bevorder de communicatie tussen jongeren en gemeentelijke besluitvorming.", date: "oktober 2024 – Heden" }, en: { title: "Chairman – Wageningen Youth Council", desc: "Advising the municipality on youth policy, establishing a new structure, and promoting communication between youth and municipal decision-making.", date: "October 2024 – Present" }},
+            { nl: { title: "Student Assessor", company: "Christelijke Hogeschool Ede", desc: "Vertegenwoordigde studenten op bestuursniveau, leidde projecten, bevorderde duurzaamheid en organiseerde grote evenementen.", date: "april 2023 – januari 2024" }, en: { title: "Student Assessor", company: "CHE University of Applied Sciences", desc: "Represented students at the executive level, led projects, promoted sustainability, and organized large-scale events.", date: "April 2023 – January 2024" }},
+            { nl: { title: "Voorzitter & Oprichter – S.V. NULL", company: "Studievereniging ICT", desc: "Vereniging opgericht voor en door ICT-studenten, bestuur geleid en 35% van de opleiding betrokken als actief lid.", date: "september 2022 – augustus 2024" }, en: { title: "Chairman & Founder – S.V. NULL", company: "ICT Study Association", desc: "Established an association for and by ICT students, led the board, and managed to involve 35% of the entire study program as active members.", date: "September 2022 – August 2024" }},
+            { nl: { title: "BA IT – Christelijke Hogeschool Ede", company: "Specialisatie: IT-Consultancy", desc: "Brede basis in Development & UX-design. Leiding gegeven aan stageprojecten voor de implementatie van HubSpot en een ERP PowerApps-oplossing.", date: "september 2022 – Heden" }, en: { title: "BA IT – CHE University of Applied Sciences", company: "Specialization: IT Consultancy", desc: "Broad foundation in Development & UX design. Led internship projects for the implementation of HubSpot and an ERP PowerApps solution.", date: "September 2022 – Present" }}
+        ];
+
+        let html = '';
+        timelineData.forEach((item, index) => {
+            const content = item[lang] || item.nl;
+            const companyHtml = content.company ? `<p class="timeline__company">${content.company}</p>` : '';
+            html += `
+                <div class="timeline__item reveal" style="transition-delay: ${index * 100}ms">
+                    <div class="timeline__content">
+                        <h3 class="timeline__title">${content.title}</h3>
+                        ${companyHtml}
+                        <p class="timeline__description">${content.desc}</p>
+                    </div>
+                    <div class="timeline__date">${content.date}</div>
+                </div>
+            `;
+        });
+        timelineContainer.innerHTML = html;
+        initScrollAnimationsForTimeline();
+    }
+    
     function initScrollAnimationsForTimeline() {
         const timelineItems = document.querySelectorAll('.timeline .reveal');
         if (!timelineItems.length) return;
-
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -369,11 +257,132 @@ follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%,
                 }
             });
         }, { threshold: 0.1 });
-
         timelineItems.forEach(element => observer.observe(element));
     }
     
-    // ... (rest van de functies: initSmoothScrolling, etc. ongewijzigd) ...
-    // ... de overige functies uit het vorige antwoord komen hier ...
+    /**
+     * FUNCTIE: SOEPEL SCROLLEN (SMOOTH SCROLLING)
+     */
+    function initSmoothScrolling() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    }
+
+    /**
+     * FUNCTIE: SCROLL-TRIGGERED ANIMATIONS (voor algemene elementen)
+     */
+    function initScrollAnimations() {
+        const elementsToReveal = document.querySelectorAll('.reveal:not(.timeline__item)');
+        if (!elementsToReveal.length) return;
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        elementsToReveal.forEach(element => observer.observe(element));
+    }
+
+    /**
+     * FUNCTIE: ACTIEVE NAVIGATIESTATUS BIJ SCROLLEN
+     */
+    function initActiveNavOnScroll() {
+        const sections = document.querySelectorAll('main section[id]');
+        const navLinks = document.querySelectorAll('.header__nav a');
+        if (!sections.length || !navLinks.length) return;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-50% 0px -50% 0px' });
+        sections.forEach(section => observer.observe(section));
+    }
+
+    /**
+     * FUNCTIE: GEOPTIMALISEERD PARALLAX EFFECT
+     */
+    function initParallax() {
+        const heroBg = document.querySelector('.hero__bg');
+        if (!heroBg) return;
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollValue = window.scrollY;
+                    heroBg.style.transform = `translateY(${scrollValue * 0.3}px)`;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+
+    /**
+     * FUNCTIE: CUSTOM CURSOR
+     */
+    function initCustomCursor() {
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+        if (!cursor || !follower) return;
+        const interactiveElements = 'a, .btn, button, .timeline__content, .case-study';
+        let posX = 0, posY = 0;
+        let mouseX = 0, mouseY = 0;
+        window.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        const followMouse = () => {
+            posX += (mouseX - posX) * 0.2;
+            posY += (mouseY - posY) * 0.2;
+            cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+            follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
+            requestAnimationFrame(followMouse);
+        };
+        followMouse();
+        document.body.addEventListener('mouseenter', (e) => {
+            if (e.target.closest(interactiveElements)) {
+                document.body.classList.add('cursor-grow');
+            }
+        });
+        document.body.addEventListener('mouseleave', (e) => {
+             if (e.target.closest(interactiveElements)) {
+                document.body.classList.remove('cursor-grow');
+            }
+        }, true);
+         document.body.addEventListener('mouseover', (e) => {
+            if (e.target.closest(interactiveElements)) {
+                document.body.classList.add('cursor-grow');
+            } else {
+                 document.body.classList.remove('cursor-grow');
+            }
+        });
+    }
+
+    /**
+     * FUNCTIE: DYNAMISCH JAARTAL IN FOOTER
+     */
+    function updateFooterYear() {
+        const yearSpan = document.getElementById('current-year');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+    }
 
 })();
