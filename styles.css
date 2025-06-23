@@ -303,3 +303,20 @@ button,
     max-width: 300px;
     margin: 0 auto;
 }
+/* Plak dit in je styles.css, bijvoorbeeld bij de andere 'about' stijlen */
+
+/* Stijl voor de nieuwe afbeelding in de 'Over Mij' sectie */
+.about__image {
+    width: 100%;
+    max-width: 400px; /* Behoudt de maximale grootte */
+    height: auto;
+    display: block; /* Voorkomt extra ruimte onder de afbeelding */
+    border-radius: 8px; /* Een moderne, licht afgeronde hoek */
+    border: 1px solid var(--color-border);
+    
+    /* Zorgt ervoor dat de afbeelding de container vult zonder te vervormen */
+    object-fit: cover; 
+    
+    /* Behoudt de elegante, staande verhouding van de placeholder */
+    aspect-ratio: 1 / 1.1; 
+}
