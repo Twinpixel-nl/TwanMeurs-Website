@@ -30,8 +30,9 @@
             // Over Mij
             aboutTitle: "Mijn Aanpak",
             aboutSubtitle: "Gedreven door resultaat, geleid door verbinding.",
-            aboutP1: "Op het snijvlak van technologie en organisatie voel ik mij thuis. Mijn kracht ligt in het doorgronden van complexe bestuurlijke vraagstukken en deze te vertalen naar concrete, technologische oplossingen die écht werken. Ik geloof niet in IT om de IT; ik geloof in IT als strategische motor voor vooruitgang.",
-            aboutP2: "Mijn analytische blik, aangescherpt door een passie voor strategische bordspellen, helpt me om systemen en processen snel te doorzien. De discipline en het doorzettingsvermogen van het wielrennen pas ik toe op langdurige transformatieprojecten: met focus, stapsgewijs, en altijd met het einddoel voor ogen.",
+            aboutP1: "I believe technology is a means - not an end. As an IT consultant with experience in strategic and administrative environments, I help organizations translate complex challenges into concrete digital solutions. This includes information flows, tooling, data governance, or digital strategy.",
+            aboutP2: "What sets me apart is my dual focus: I understand the technical side and speak the language of governance and policy. As a student representative on the Executive Board of CHE and founder of the student association NULL, I know how to connect people and build support. I combine this governance experience with projects at WUR, TwinPixel, and external clients.",
+            aboutP3: "My approach is analytical, pragmatic, and people-oriented. I work with structure, think in terms of opportunities, and always keep the end goal in sight. Whether it’s process improvement, AI chatbots, system design, or organizational change - I make technology understandable, governable, and strategically valuable.",
             aboutImageAlt: "Professioneel portret van Twan Meurs",
 
             // Projecten
@@ -80,7 +81,7 @@
         en: {
             // Meta & Navigation
             metaTitle: "Twan Meurs – Building Bridges between IT & Governance",
-            metaDescription: "Twan Meurs translates complex technology into strategic governance decisions. View my projects and discover how I connect IT potential with administrative reality.",
+            metaDescription: "Twan Meurs translates complex technology into strategic governance decisions. View my projects and discover how I connect IT potential with strategic governance.",
             ogDescription: "I help governmental organizations and leading companies move forward by connecting technology with strategy.",
             navAbout: "About Me",
             navProjects: "Projects",
@@ -89,7 +90,7 @@
             navContact: "Contact",
 
             // Hero
-            heroTitle: `Building bridges between IT potential <span class="text-accent">and administrative reality.</span>`,
+            heroTitle: `Building bridges between IT potential <span class="text-accent">and strategic governance.</span>`,
             heroSubtitle: "I translate complex technology into clear, strategic decisions that help organizations advance.",
             heroBtn: "View my projects",
 
