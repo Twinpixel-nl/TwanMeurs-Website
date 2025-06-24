@@ -1,6 +1,6 @@
 /*
   APP.JS - State-of-the-Art Interacties & Vertalingen voor Twan Meurs
-  Versie: 6.0 (Final - Inclusief Ripple Effect)
+  Versie: 7.1 (Definitief & Compleet - Inclusief Mobiele Header)
 */
 
 (() => {
@@ -76,74 +76,74 @@
             footerTitle: "Laten we verbinden.",
             footerText: "Geïnteresseerd in een samenwerking of wilt u van gedachten wisselen? <br>Ik kom graag met u in contact.",
             footerBtn: "Stuur een e-mail",
-            footerCopyright: "© <span id=\"current-year\"></span> Twan Meurs. Alle rechten voorbehouden."
+            footerCopyright: "© <span id=\"current-year\"></span> <a href=\"https://www.twinpixel.nl\" target=\"_blank\" rel=\"noopener noreferrer\">TwinPixel</a> by Twan Meurs. Alle rechten voorbehouden."
         },
         en: {
-            // Meta & Navigation
-            metaTitle: "Twan Meurs – Building Bridges between IT & Governance",
-            metaDescription: "Twan Meurs translates complex technology into strategic governance decisions. View my projects and discover how I connect IT potential with strategic governance.",
-            ogDescription: "I help governmental organizations and leading companies move forward by connecting technology with strategy.",
-            navAbout: "About Me",
-            navProjects: "Projects",
-            navCareer: "Career & Education",
-            navExpertise: "Expertise",
-            navContact: "Contact",
-
-            // Hero
-            heroTitle: `Building bridges between IT potential <span class="text-accent">and strategic governance.</span>`,
-            heroSubtitle: "I translate complex technology into clear, strategic decisions that help organizations advance.",
-            heroBtn: "View my projects",
-
-            // About Me
-            aboutTitle: "My Approach",
-              aboutSubtitle: "Gedreven door resultaat, geleid door verbinding.",
-            aboutP1: "I believe technology is a means - not an end. As an IT consultant with experience in strategic and administrative environments, I help organizations translate complex challenges into concrete digital solutions. This includes information flows, tooling, data governance, or digital strategy.",
-            aboutP2: "What sets me apart is my dual focus: I understand the technical side and speak the language of governance and policy. As a student representative on the Executive Board of CHE and founder of the student association NULL, I know how to connect people and build support. I combine this governance experience with projects at WUR, TwinPixel, and external clients.",
-            aboutP3: "My approach is analytical, pragmatic, and people-oriented. I work with structure, think in terms of opportunities, and always keep the end goal in sight. Whether it’s process improvement, AI chatbots, system design, or organizational change - I make technology understandable, governable, and strategically valuable.",
-            aboutImageAlt: "Professional portrait of Twan Meurs",
-
-            // Projects
-            projectsTitle: "Featured Projects",
-            parChallenge: "Challenge:",
-            parAction: "Action:",
-            parImpact: "Impact:",
-            p1Title: "Process Optimization & Advisory",
-            p1Client: "Role: Service Consultant @ Wageningen University",
-            p1Challenge: " The need to improve various IT processes within the university and to utilize available resources more effectively.",
-            p1Action: " I modeled existing processes, drafted concrete advisory reports for the IT department, and inventoried the complete audio-visual infrastructure.",
-            p1Impact: " Directly contributed to the efficiency of the IT department and created a clear strategic overview for future investments and improvements.",
-            p2Title: "Administrative Representation & Event Management",
-            p2Client: "Role: Student Assessor @ CHE University of Applied Sciences",
-            p2Challenge: " To effectively represent the student voice at the administrative level and to strengthen the student community.",
-            p2Action: " I participated in the co-determination council, provided input on policy documents, and organized large-scale events such as the Winter Gala and Summer Night Gala.",
-            p2Impact: " Ensured direct student influence on university policy and increased engagement and satisfaction within the student community.",
-
-            // Career & Education
-            careerTitle: "Career & Education",
-
-            // Expertise
-            expertiseTitle: "Expertise",
-            expertise_t1_title: "Technical & Software",
-            expertise_t1_list: `<li>Python, SQL, C#, Golang, HTML, CSS, Javascript</li><li>Power BI, PowerApps, HubSpot</li><li>Word, PowerPoint, Excel</li>`,
-            expertise_t2_title: "Project Management & Methods",
-            expertise_t2_list: `<li>Agile, Scrum</li><li>Policy Analysis, Research</li><li>Process Optimization (Lean Green Belt)</li><li>Time Management</li>`,
-            expertise_t3_title: "Communication & Leadership",
-            expertise_t3_list: `<li>Team Leadership & Collaboration</li><li>Public Speaking & Presenting</li><li>Stakeholder Management</li><li>Conflict Resolution</li>`,
-            
-            // Recognition
-            recognitionTitle: "Recognition & Certifications",
-            rec_1_title: "Top 5 Finalist",
-            rec_1_desc: "Student of the Year Award 2024, for the most impactful students in the Netherlands.",
-            rec_2_title: "C2 Cambridge English",
-            rec_2_desc: "Proven English language proficiency at the highest achievable level (Proficiency).",
-            rec_3_title: "Lean Green Belt",
-            rec_3_desc: "Skilled in process optimization and creating and implementing efficient workflows.",
-
-            // Footer
-            footerTitle: "Let's connect.",
-            footerText: "Interested in a collaboration or would you like to exchange ideas? <br>I would be happy to get in touch with you.",
-            footerBtn: "Send an email",
-            footerCopyright: "© <span id=\"current-year\"></span> Twan Meurs. All rights reserved."
+             // Meta & Navigation
+             metaTitle: "Twan Meurs – Building Bridges between IT & Governance",
+             metaDescription: "Twan Meurs translates complex technology into strategic governance decisions. View my projects and discover how I connect IT potential with strategic governance.",
+             ogDescription: "I help governmental organizations and leading companies move forward by connecting technology with strategy.",
+             navAbout: "About Me",
+             navProjects: "Projects",
+             navCareer: "Career & Education",
+             navExpertise: "Expertise",
+             navContact: "Contact",
+ 
+             // Hero
+             heroTitle: `Building bridges between IT potential <span class="text-accent">and strategic governance.</span>`,
+             heroSubtitle: "I translate complex technology into clear, strategic decisions that help organizations advance.",
+             heroBtn: "View my projects",
+ 
+             // About Me
+             aboutTitle: "My Approach",
+             aboutSubtitle: "Technologically sharp, administratively skilled.",
+             aboutP1: "I believe technology is a means - not an end. As an IT consultant with experience in strategic and administrative environments, I help organizations translate complex challenges into concrete digital solutions. This includes information flows, tooling, data governance, or digital strategy.",
+             aboutP2: "What sets me apart is my dual focus: I understand the technical side and speak the language of governance and policy. As a student representative on the Executive Board of CHE and founder of the student association NULL, I know how to connect people and build support. I combine this governance experience with projects at WUR, TwinPixel, and external clients.",
+             aboutP3: "My approach is analytical, pragmatic, and people-oriented. I work with structure, think in terms of opportunities, and always keep the end goal in sight. Whether it’s process improvement, AI chatbots, system design, or organizational change - I make technology understandable, governable, and strategically valuable.",
+             aboutImageAlt: "Professional portrait of Twan Meurs",
+ 
+             // Projects
+             projectsTitle: "Featured Projects",
+             parChallenge: "Challenge:",
+             parAction: "Action:",
+             parImpact: "Impact:",
+             p1Title: "Process Optimization & Advisory",
+             p1Client: "Role: Service Consultant @ Wageningen University",
+             p1Challenge: " The need to improve various IT processes within the university and to utilize available resources more effectively.",
+             p1Action: " I modeled existing processes, drafted concrete advisory reports for the IT department, and inventoried the complete audio-visual infrastructure.",
+             p1Impact: " Directly contributed to the efficiency of the IT department and created a clear strategic overview for future investments and improvements.",
+             p2Title: "Administrative Representation & Event Management",
+             p2Client: "Role: Student Assessor @ CHE University of Applied Sciences",
+             p2Challenge: " To effectively represent the student voice at the administrative level and to strengthen the student community.",
+             p2Action: " I participated in the co-determination council, provided input on policy documents, and organized large-scale events such as the Winter Gala and Summer Night Gala.",
+             p2Impact: " Ensured direct student influence on university policy and increased engagement and satisfaction within the student community.",
+ 
+             // Career & Education
+             careerTitle: "Career & Education",
+ 
+             // Expertise
+             expertiseTitle: "Expertise",
+             expertise_t1_title: "Technical & Software",
+             expertise_t1_list: `<li>Python, SQL, C#, Golang, HTML, CSS, Javascript</li><li>Power BI, PowerApps, HubSpot</li><li>Word, PowerPoint, Excel</li>`,
+             expertise_t2_title: "Project Management & Methods",
+             expertise_t2_list: `<li>Agile, Scrum</li><li>Policy Analysis, Research</li><li>Process Optimization (Lean Green Belt)</li><li>Time Management</li>`,
+             expertise_t3_title: "Communication & Leadership",
+             expertise_t3_list: `<li>Team Leadership & Collaboration</li><li>Public Speaking & Presenting</li><li>Stakeholder Management</li><li>Conflict Resolution</li>`,
+             
+             // Recognition
+             recognitionTitle: "Recognition & Certifications",
+             rec_1_title: "Top 5 Finalist",
+             rec_1_desc: "Student of the Year Award 2024, for the most impactful students in the Netherlands.",
+             rec_2_title: "C2 Cambridge English",
+             rec_2_desc: "Proven English language proficiency at the highest achievable level (Proficiency).",
+             rec_3_title: "Lean Green Belt",
+             rec_3_desc: "Skilled in process optimization and creating and implementing efficient workflows.",
+ 
+             // Footer
+             footerTitle: "Let's connect.",
+             footerText: "Interested in a collaboration or would you like to exchange ideas? <br>I would be happy to get in touch with you.",
+             footerBtn: "Send an email",
+             footerCopyright: "© <span id=\"current-year\"></span> <a href=\"https://www.twinpixel.nl\" target=\"_blank\" rel=\"noopener noreferrer\">TwinPixel</a> by Twan Meurs. All rights reserved."
         }
     };
 
@@ -151,7 +151,9 @@
      * INITIALISATIE
      */
     document.addEventListener('DOMContentLoaded', () => {
-        initClickRippleEffect(); // Nieuwe functie
+        initMobileNav();
+        initHeaderScroll();
+        initClickRippleEffect();
         initLanguageSwitcher();
         initSmoothScrolling();
         initScrollAnimations();
@@ -159,6 +161,51 @@
         initParallax();
         initCustomCursor();
     });
+
+    /**
+     * FUNCTIE: Mobiele Navigatie (Hamburger Menu)
+     */
+    function initMobileNav() {
+        const header = document.querySelector('.header');
+        const toggleBtn = document.querySelector('.header__toggle');
+        const navMenu = document.querySelector('.header__menu');
+        if (!toggleBtn || !navMenu) return;
+
+        toggleBtn.addEventListener('click', () => {
+            const isOpen = header.classList.toggle('header--open');
+            toggleBtn.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const targetId = link.getAttribute('href');
+                if (targetId && targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        header.classList.remove('header--open');
+                        toggleBtn.setAttribute('aria-expanded', 'false');
+                        document.body.style.overflow = '';
+                        setTimeout(() => {
+                             targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }, 300);
+                    }
+                }
+            });
+        });
+    }
+
+    /**
+     * FUNCTIE: Dynamische Header op Scroll
+     */
+    function initHeaderScroll() {
+        const header = document.querySelector('.header');
+        if (!header) return;
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    }
 
     /**
      * FUNCTIE: KLIK GOLF-EFFECT (RIPPLE)
@@ -175,13 +222,12 @@
             }, 600);
         });
     }
-
+    
     /**
      * FUNCTIE: TAALWISSELAAR
      */
     function initLanguageSwitcher() {
         const langLinks = document.querySelectorAll('.lang-link');
-        
         langLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -190,7 +236,6 @@
                 localStorage.setItem('language', selectedLang);
             });
         });
-
         const storedLang = localStorage.getItem('language') || 'nl';
         switchLanguage(storedLang);
     }
@@ -198,7 +243,6 @@
     function switchLanguage(lang) {
         document.documentElement.setAttribute('lang', lang);
         const data = languageData[lang] || languageData.nl;
-
         document.querySelectorAll('[data-lang-key]').forEach(el => {
             const key = el.getAttribute('data-lang-key');
             if (data[key]) {
@@ -213,16 +257,13 @@
                 }
             }
         });
-        
         updateTimeline(lang);
-
         document.querySelectorAll('.lang-link').forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('data-lang') === lang) {
                 link.classList.add('active');
             }
         });
-        
         updateFooterYear();
     }
     
@@ -232,7 +273,6 @@
     function updateTimeline(lang) {
         const timelineContainer = document.querySelector('.timeline');
         if (!timelineContainer) return;
-        
         const timelineData = [
             { nl: { title: "Medeoprichter – TwinPixel Webdesign & IT-advies", desc: "Kleinschalig bureau gestart voor het ontwikkelen van moderne websites (HTML, CSS, JS, SEO) en het realiseren van functies als chatbotintegratie en meertalige ondersteuning.", date: "maart 2025 – Heden" }, en: { title: "Co-founder – TwinPixel Webdesign & IT-advice", desc: "Started a small-scale agency for developing modern websites (HTML, CSS, JS, SEO) and implementing features like chatbot integration and multilingual support.", date: "March 2025 – Present" }},
             { nl: { title: "Lid – Studentenhogeschoolraad van de CHE", desc: "Vertegenwoordig studenten op centraal niveau binnen de medezeggenschap en denk actief mee over strategisch beleid, huisvesting en begrotingen.", date: "maart 2025 – Heden" }, en: { title: "Member – CHE Student Council", desc: "Representing students at a central level in the university's participatory bodies and actively contributing to strategic policy, housing, and budgets.", date: "March 2025 – Present" }},
@@ -242,7 +282,6 @@
             { nl: { title: "Voorzitter & Oprichter – S.V. NULL", company: "Studievereniging ICT", desc: "Vereniging opgericht voor en door ICT-studenten, bestuur geleid en 35% van de opleiding betrokken als actief lid.", date: "september 2022 – augustus 2024" }, en: { title: "Chairman & Founder – S.V. NULL", company: "ICT Study Association", desc: "Established an association for and by ICT students, led the board, and managed to involve 35% of the entire study program as active members.", date: "September 2022 – August 2024" }},
             { nl: { title: "BA IT – Christelijke Hogeschool Ede", company: "Specialisatie: IT-Consultancy", desc: "Brede basis in Development & UX-design. Leiding gegeven aan stageprojecten voor de implementatie van HubSpot en een ERP PowerApps-oplossing.", date: "september 2022 – Heden" }, en: { title: "BA IT – CHE University of Applied Sciences", company: "Specialization: IT Consultancy", desc: "Broad foundation in Development & UX design. Led internship projects for the implementation of HubSpot and an ERP PowerApps solution.", date: "September 2022 – Present" }}
         ];
-
         let html = '';
         timelineData.forEach((item, index) => {
             const content = item[lang] || item.nl;
@@ -281,6 +320,9 @@
      */
     function initSmoothScrolling() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            // Negeer links in het mobiele menu, want die hebben hun eigen logica
+            if (anchor.closest('.header__menu')) return; 
+
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetElement = document.querySelector(this.getAttribute('href'));
