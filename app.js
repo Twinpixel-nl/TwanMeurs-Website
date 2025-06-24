@@ -29,10 +29,10 @@
             
             // Over Mij
             aboutTitle: "Mijn Aanpak",
-            aboutSubtitle: "Gedreven door resultaat, geleid door verbinding.",
-            aboutP1: "I believe technology is a means - not an end. As an IT consultant with experience in strategic and administrative environments, I help organizations translate complex challenges into concrete digital solutions. This includes information flows, tooling, data governance, or digital strategy.",
-            aboutP2: "What sets me apart is my dual focus: I understand the technical side and speak the language of governance and policy. As a student representative on the Executive Board of CHE and founder of the student association NULL, I know how to connect people and build support. I combine this governance experience with projects at WUR, TwinPixel, and external clients.",
-            aboutP3: "My approach is analytical, pragmatic, and people-oriented. I work with structure, think in terms of opportunities, and always keep the end goal in sight. Whether it’s process improvement, AI chatbots, system design, or organizational change - I make technology understandable, governable, and strategically valuable.",
+            aboutSubtitle: "Technologisch scherp, bestuurlijk onderlegd.",
+            aboutP1: "Ik geloof in technologie als middel - niet als doel. Als IT-consultant met ervaring binnen strategische en bestuurlijke omgevingen help ik organisaties complexe vraagstukken te vertalen naar concrete digitale oplossingen. Dat kan gaan over informatiestromen, tooling, data governance of digitale strategie.",
+            aboutP2: "Wat mij uniek maakt, is mijn dubbelfocus: ik begrijp de techniek én ik spreek de taal van bestuur en beleid. Als studentassessor bij het College van Bestuur van de CHE en oprichter van studievereniging NULL weet ik hoe je mensen verbindt en draagvlak creëert. Die bestuurlijke ervaring combineer ik met projecten bij onder meer WUR, TwinPixel en externe opdrachtgevers.",
+            aboutP3: "Mijn aanpak is analytisch, pragmatisch en mensgericht. Ik werk vanuit structuur, denk in mogelijkheden, en houd altijd oog voor het einddoel. Of het nu gaat om procesverbetering, AI-chatbots, systeemontwerp of verandervraagstukken - ik maak technologie begrijpelijk, bestuurbaar én strategisch waardevol.",
             aboutImageAlt: "Professioneel portret van Twan Meurs",
 
             // Projecten
@@ -96,9 +96,10 @@
 
             // About Me
             aboutTitle: "My Approach",
-            aboutSubtitle: "Driven by results, guided by connection.",
-            aboutP1: "I feel at home at the intersection of technology and organization. My strength lies in understanding complex administrative issues and translating them into concrete, technological solutions that truly work. I don't believe in IT for IT's sake; I believe in IT as a strategic engine for progress.",
-            aboutP2: "My analytical perspective, sharpened by a passion for strategic board games, helps me to quickly grasp systems and processes. I apply the discipline and perseverance from cycling to long-term transformation projects: with focus, step-by-step, and always with the end goal in mind.",
+              aboutSubtitle: "Gedreven door resultaat, geleid door verbinding.",
+            aboutP1: "I believe technology is a means - not an end. As an IT consultant with experience in strategic and administrative environments, I help organizations translate complex challenges into concrete digital solutions. This includes information flows, tooling, data governance, or digital strategy.",
+            aboutP2: "What sets me apart is my dual focus: I understand the technical side and speak the language of governance and policy. As a student representative on the Executive Board of CHE and founder of the student association NULL, I know how to connect people and build support. I combine this governance experience with projects at WUR, TwinPixel, and external clients.",
+            aboutP3: "My approach is analytical, pragmatic, and people-oriented. I work with structure, think in terms of opportunities, and always keep the end goal in sight. Whether it’s process improvement, AI chatbots, system design, or organizational change - I make technology understandable, governable, and strategically valuable.",
             aboutImageAlt: "Professional portrait of Twan Meurs",
 
             // Projects
