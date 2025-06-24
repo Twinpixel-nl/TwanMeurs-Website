@@ -1,9 +1,10 @@
 /*
   STYLESHEET VOOR TWAN MEURS - PERSOONLIJKE WEBSITE
-  Versie: 7.3 (Definitieve Mobile Overlay Fix)
+  Versie: 7.4 (Definitief & Compleet - Mobile Overlay Fix)
 */
 
 /* ======== 1. ALGEMENE STIJLEN & VARIABELEN ======== */
+
 :root {
   --font-primary: 'Inter', sans-serif;
   --font-secondary: 'Playfair Display', serif;
@@ -23,6 +24,7 @@
   --transition-slow: 0.8s;
   --reveal-easing: cubic-bezier(0.65, 0, 0.35, 1);
 }
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); font-size: 100%; }
 body { overflow-x: hidden; font-family: var(--font-primary); background-color: var(--color-background); color: var(--color-text-medium); line-height: 1.7; -webkit-font-smoothing: antialiased; }
@@ -38,7 +40,7 @@ a:hover { color: var(--color-accent-hover); }
 .header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height); z-index: 1001; background-color: rgba(15, 15, 15, 0); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-border); transition: background-color 0.3s ease; }
 .header.scrolled { background-color: rgba(15, 15, 15, 0.9); }
 .header__container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
-.header__logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; z-index: 1002; }
+.header__logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
 .header__logo-icon { fill: var(--color-accent); }
 .header__logo-text { font-family: var(--font-secondary); font-size: 1.5rem; color: var(--color-text-light); }
 .header__menu { display: flex; align-items: center; gap: 2.5rem; }
@@ -60,15 +62,15 @@ a:hover { color: var(--color-accent-hover); }
 /* ======== 3. HERO SECTIE ======== */
 .hero { height: 100vh; min-height: 700px; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; color: var(--color-text-light); }
 .hero__bg { position: absolute; top: -10vh; left: 0; width: 100%; height: 120vh; z-index: -1; background: linear-gradient(rgba(15, 15, 15, 0.8), var(--color-background)), url('https://images.unsplash.com/photo-1554224155-8d04421cd6e2?q=80&w=2072&auto=format&fit=crop') no-repeat center center/cover; }
-.hero__content { max-width: 800px; }
+.hero__content { max-width: 800px; position: relative; z-index: 1; }
 .hero__title { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 1rem; }
 .hero__subtitle { font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--color-text-medium); margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-.scroll-down-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); width: 24px; height: 40px; border: 2px solid var(--color-text-medium); border-radius: 20px; opacity: 0.7; }
+.scroll-down-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); width: 24px; height: 40px; border: 2px solid var(--color-text-medium); border-radius: 20px; opacity: 0.7; z-index: 1; }
 .scroll-down-indicator::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 4px; height: 8px; background-color: var(--color-text-medium); border-radius: 2px; animation: scroll-anim 2s infinite; }
 @keyframes scroll-anim { 0% { opacity: 1; top: 8px; } 50% { opacity: 0; top: 20px; } 100% { opacity: 1; top: 8px; } }
 
 /* ======== 4. ALGEMENE SECTIE & COMPONENTEN STIJLEN ======== */
-.section { padding: 6rem 0; border-bottom: 1px solid var(--color-border); }
+.section { padding: 6rem 0; border-bottom: 1px solid var(--color-border); position: relative; z-index: 1; }
 .section:last-of-type { border-bottom: none; }
 .section--dark { background-color: var(--color-background-dark); }
 .section-title { font-size: clamp(2rem, 5vw, 2.75rem); margin-bottom: 1rem; }
@@ -161,57 +163,58 @@ body.cursor-grow .cursor-follower { width: 60px; height: 60px; background-color:
 /* ======== 11. RESPONSIVITEIT & MOBIELE NAVIGATIE ======== */
 @media (max-width: 850px) {
     .header__logo-text { display: none; } 
-    .header__menu {
+    .header__menu { display: none; }
+    .header__toggle { display: block; }
+
+    .header--open .header__menu {
+        display: flex;
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         background-color: var(--color-background);
-        z-index: 1000; /* Zorgt dat menu boven content komt, maar onder de knoppen */
-        display: flex;
+        z-index: 1000;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 2.5rem;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-20px);
-        transition: opacity 0.4s ease, visibility 0.4s, transform 0.4s ease;
+        animation: fadeInMenu 0.4s ease;
     }
-    .header__toggle { display: block; }
 
-    .header--open .header__menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
+    @keyframes fadeInMenu {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
     
-    .header__nav {
+    .header--open .header__nav {
         flex-direction: column;
         text-align: center;
         gap: 1.5rem;
     }
 
-    .nav-link {
+    .header--open .nav-link {
         font-size: 1.5rem;
         color: var(--color-text-light);
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        animation: fadeInUpMenuLink 0.4s ease forwards;
     }
 
-    .header--open .nav-link {
-        opacity: 1;
-        transform: translateY(0);
+    @keyframes fadeInUpMenuLink {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    .header--open .header__nav a:nth-child(1) { transition-delay: 0.1s; }
-    .header--open .header__nav a:nth-child(2) { transition-delay: 0.15s; }
-    .header--open .header__nav a:nth-child(3) { transition-delay: 0.2s; }
-    .header--open .header__nav a:nth-child(4) { transition-delay: 0.25s; }
-    .header--open .header__nav a:nth-child(5) { transition-delay: 0.3s; }
     
-    .header__language {
+    .header--open .header__nav a:nth-child(1) { animation-delay: 0.1s; }
+    .header--open .header__nav a:nth-child(2) { animation-delay: 0.2s; }
+    .header--open .header__nav a:nth-child(3) { animation-delay: 0.3s; }
+    .header--open .header__nav a:nth-child(4) { animation-delay: 0.4s; }
+    .header--open .header__nav a:nth-child(5) { animation-delay: 0.5s; }
+    
+    .header--open .header__language {
         margin-top: 1rem;
         font-size: 1.2rem;
     }
