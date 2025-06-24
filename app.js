@@ -13,7 +13,7 @@
     const languageData = {
         nl: {
             // Meta & Navigatie
-            metaTitle: "Twan Meurs – Bruggenbouwer tussen IT & Bestuur",
+            metaTitle: "Twan Meurs - Bruggenbouwer tussen IT & Bestuur",
             metaDescription: "Twan Meurs vertaalt complexe technologie naar strategische bestuursbeslissingen. Bekijk mijn projecten en ontdek hoe ik IT-potentieel verbind met bestuurlijke realiteit.",
             ogDescription: "Ik help bestuurlijke organisaties en toonaangevende bedrijven vooruit door technologie te verbinden met strategie.",
             navAbout: "Over Mij",
