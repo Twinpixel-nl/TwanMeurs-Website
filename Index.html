@@ -33,46 +33,46 @@
     <div class="cursor-follower"></div>
 
     <!-- ========= NIEUWE, STATE-OF-THE-ART HEADER ========= -->
-    <header class="header">
-        <div class="container header__container">
-            
-            <!-- Desktop Logo: de volledige naam -->
-            <a href="#home" class="header__logo">Twan Meurs</a>
+<header class="header">
+    <div class="container header__container">
+        
+        <!-- Desktop & Mobiel Logo in één. Simpel en effectief. -->
+        <a href="#home" class="header__logo">
+            <!-- Het TM Monogram Icoon -->
+            <svg class="header__logo-icon" width="32" height="32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                 <!-- PLAATS HIER JE EIGEN RODE TM MONOGRAM SVG -->
+                 <!-- Ik heb de fill-kleur direct hier ingesteld op de accentkleur -->
+                 <path fill="#B10000" d="M..."/> <!-- Jouw SVG pad -->
+            </svg>
+            <!-- De naam wordt op mobiel verborgen met CSS -->
+            <span class="header__logo-text">Twan Meurs</span>
+        </a>
 
-            <!-- Mobiel Logo: het TM monogram -->
-            <a href="#home" class="header__logo--mobile" aria-label="Home">
-                <!-- PLAATS HIER JE EIGEN WITTE, TRANSPARANTE TM MONOGRAM SVG -->
-                <!-- Dit is een voorbeeld SVG, vervang het! -->
-                <svg width="32" height="32" viewBox="0 0 100 100" fill="#F5F5F5" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M28.6,83.1V25.3h8.9v23.4h0.2l12.4-23.4H61l-14.9,27l16.1,30.8h-11L41,61l-10.1,22.1H28.6z M71.4,83.1V25.3h8.9v57.8H71.4z"/>
-                </svg>
-            </a>
-
-            <!-- Menu container voor navigatie en taal -->
-            <div class="header__menu">
-                <nav class="header__nav">
-                    <a href="#over" class="nav-link" data-lang-key="navAbout">Over Mij</a>
-                    <a href="#projecten" class="nav-link" data-lang-key="navProjects">Projecten</a>
-                    <a href="#loopbaan" class="nav-link" data-lang-key="navCareer">Loopbaan & Opleiding</a>
-                    <a href="#expertise" class="nav-link" data-lang-key="navExpertise">Expertise</a>
-                    <a href="#contact" class="nav-link" data-lang-key="navContact">Contact</a>
-                </nav>
-                <div class="header__language">
-                    <a href="#" class="lang-link" data-lang="nl">NL</a>
-                    <span class="lang-separator">|</span>
-                    <a href="#" class="lang-link" data-lang="en">EN</a>
-                </div>
+        <!-- Menu container voor navigatie en taal (voor mobiele overlay) -->
+        <div class="header__menu">
+            <nav class="header__nav">
+                <a href="#over" class="nav-link" data-lang-key="navAbout">Over Mij</a>
+                <a href="#projecten" class="nav-link" data-lang-key="navProjects">Projecten</a>
+                <a href="#loopbaan" class="nav-link" data-lang-key="navCareer">Loopbaan & Opleiding</a>
+                <a href="#expertise" class="nav-link" data-lang-key="navExpertise">Expertise</a>
+                <a href="#contact" class="nav-link" data-lang-key="navContact">Contact</a>
+            </nav>
+            <div class="header__language">
+                <a href="#" class="lang-link" data-lang="nl">NL</a>
+                <span class="lang-separator">|</span>
+                <a href="#" class="lang-link" data-lang="en">EN</a>
             </div>
-
-            <!-- Hamburger knop voor mobiel -->
-            <button class="header__toggle" aria-label="Menu openen/sluiten" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
         </div>
-    </header>
+
+        <!-- Hamburger knop voor mobiel -->
+        <button class="header__toggle" aria-label="Menu openen/sluiten" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </div>
+</header>
     <!-- ========= EINDE NIEUWE HEADER ========= -->
 
 
