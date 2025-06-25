@@ -280,14 +280,100 @@ p2Impact: " Drove greater student influence on university governance and improve
         const timelineContainer = document.querySelector('.timeline');
         if (!timelineContainer) return;
         const timelineData = [
-            { nl: { title: "Medeoprichter – TwinPixel Webdesign & IT-advies", desc: "Kleinschalig bureau gestart voor het ontwikkelen van moderne websites (HTML, CSS, JS, SEO) en het realiseren van functies als chatbotintegratie en meertalige ondersteuning.", date: "maart 2025 – Heden" }, en: { title: "Co-founder – TwinPixel Webdesign & IT-advice", desc: "Started a small-scale agency for developing modern websites (HTML, CSS, JS, SEO) and implementing features like chatbot integration and multilingual support.", date: "March 2025 – Present" }},
-            { nl: { title: "Lid – Studentenhogeschoolraad van de CHE", desc: "Vertegenwoordig studenten op centraal niveau binnen de medezeggenschap en denk actief mee over strategisch beleid, huisvesting en begrotingen.", date: "maart 2025 – Heden" }, en: { title: "Member – CHE Student Council", desc: "Representing students at a central level in the university's participatory bodies and actively contributing to strategic policy, housing, and budgets.", date: "March 2025 – Present" }},
-            { nl: { title: "Service Consultant", company: "Wageningse Universiteit", desc: "Modelleren en verbeteren van IT-processen, opstellen van adviesrapporten en inventariseren van audiovisuele middelen.", date: "oktober 2024 – Heden" }, en: { title: "Service Consultant", company: "Wageningen University", desc: "Modeling and improving IT processes, drafting advisory reports, and inventorying audio-visual resources.", date: "October 2024 – Present" }},
-            { nl: { title: "Voorzitter – Jongerenraad Wageningen", desc: "Adviseer de gemeente over jongerenbeleid, zet een nieuwe structuur op en bevorder de communicatie tussen jongeren en gemeentelijke besluitvorming.", date: "oktober 2024 – Heden" }, en: { title: "Chairman – Wageningen Youth Council", desc: "Advising the municipality on youth policy, establishing a new structure, and promoting communication between youth and municipal decision-making.", date: "October 2024 – Present" }},
-            { nl: { title: "Student Assessor", company: "Christelijke Hogeschool Ede", desc: "Vertegenwoordigde studenten op bestuursniveau, leidde projecten, bevorderde duurzaamheid en organiseerde grote evenementen.", date: "april 2023 – januari 2024" }, en: { title: "Student Assessor", company: "CHE University of Applied Sciences", desc: "Represented students at the executive level, led projects, promoted sustainability, and organized large-scale events.", date: "April 2023 – January 2024" }},
-            { nl: { title: "Voorzitter & Oprichter – S.V. NULL", company: "Studievereniging ICT", desc: "Vereniging opgericht voor en door ICT-studenten, bestuur geleid en 35% van de opleiding betrokken als actief lid.", date: "september 2022 – augustus 2024" }, en: { title: "Chairman & Founder – S.V. NULL", company: "ICT Study Association", desc: "Established an association for and by ICT students, led the board, and managed to involve 35% of the entire study program as active members.", date: "September 2022 – August 2024" }},
-            { nl: { title: "BA IT – Christelijke Hogeschool Ede", company: "Specialisatie: IT-Consultancy", desc: "Brede basis in Development & UX-design. Leiding gegeven aan stageprojecten voor de implementatie van HubSpot en een ERP PowerApps-oplossing.", date: "september 2022 – Heden" }, en: { title: "BA IT – CHE University of Applied Sciences", company: "Specialization: IT Consultancy", desc: "Broad foundation in Development & UX design. Led internship projects for the implementation of HubSpot and an ERP PowerApps solution.", date: "September 2022 – Present" }}
-        ];
+  {
+    nl: {
+      title: "Co-founder – TwinPixel Webdesign & IT-consultancy",
+      desc: "Oprichter van een modern bureau voor maatwerkwebsites, SEO, AI-chatbots en strategisch digitaal advies. Gericht op ondernemers en organisaties met groeiambitie.",
+      date: "maart 2025 – heden"
+    },
+    en: {
+      title: "Co-founder – TwinPixel Webdesign & IT Consultancy",
+      desc: "Founder of a modern agency for custom websites, SEO, AI chatbot integration, and strategic digital advice. Focused on entrepreneurs and growth-oriented organizations.",
+      date: "March 2025 – Present"
+    }
+  },
+  {
+    nl: {
+      title: "Lid – Studentenhogeschoolraad CHE",
+      desc: "Behartig de belangen van studenten op centraal niveau, lever inhoudelijke input op beleid, en verbind onderwijs met de studentbeleving.",
+      date: "maart 2025 – heden"
+    },
+    en: {
+      title: "Member – CHE Student Council",
+      desc: "Representing students at the central level, providing substantive input on policy, and connecting education with the student experience.",
+      date: "March 2025 – Present"
+    }
+  },
+  {
+    nl: {
+      title: "IT Consultant",
+      company: "Wageningen University & Research",
+      desc: "Verbeteren van IT-processen, opstellen van strategische adviezen en visualiseren van AV-infrastructuur ter ondersteuning van besluitvorming.",
+      date: "oktober 2024 – heden"
+    },
+    en: {
+      title: "IT Consultant",
+      company: "Wageningen University & Research",
+      desc: "Improving IT processes, creating strategic advisory reports, and visualizing AV infrastructure to support decision-making.",
+      date: "October 2024 – Present"
+    }
+  },
+  {
+    nl: {
+      title: "Voorzitter – Jongerenraad Wageningen",
+      desc: "Leid de raad, adviseer de gemeente over jongerenbeleid, en bouw aan een duurzame brug tussen jongeren en politiek-bestuurlijke organen.",
+      date: "oktober 2024 – heden"
+    },
+    en: {
+      title: "Chair – Wageningen Youth Council",
+      desc: "Leading the council, advising the municipality on youth policy, and building a sustainable bridge between youth and political decision-makers.",
+      date: "October 2024 – Present"
+    }
+  },
+  {
+    nl: {
+      title: "Student Assessor",
+      company: "Christelijke Hogeschool Ede",
+      desc: "Schakelfiguur tussen studenten en bestuur; verantwoordelijk voor strategisch advies, beleidsinput en het opzetten van impactvolle events.",
+      date: "april 2023 – januari 2024"
+    },
+    en: {
+      title: "Student Assessor",
+      company: "CHE University of Applied Sciences",
+      desc: "Liaison between students and the executive board; responsible for strategic advice, policy input, and organizing impactful events.",
+      date: "April 2023 – January 2024"
+    }
+  },
+  {
+    nl: {
+      title: "Voorzitter & Oprichter – S.V. NULL",
+      company: "Studievereniging ICT",
+      desc: "ICT-vereniging opgezet vanuit niets; leidde een team, vergrootte betrokkenheid van studenten en organiseerde educatieve én sociale activiteiten.",
+      date: "september 2022 – augustus 2024"
+    },
+    en: {
+      title: "Chair & Founder – S.V. NULL",
+      company: "ICT Study Association",
+      desc: "Founded the ICT study association from scratch; led a team, increased student engagement, and organized both educational and social activities.",
+      date: "September 2022 – August 2024"
+    }
+  },
+  {
+    nl: {
+      title: "BA ICT – Christelijke Hogeschool Ede",
+      company: "Specialisatie: IT-Consultancy",
+      desc: "T-shaped opleiding met focus op consultancy, development en UX. Stages met o.a. implementatie van HubSpot en PowerApps binnen het mkb.",
+      date: "september 2022 – heden"
+    },
+    en: {
+      title: "BA ICT – CHE University of Applied Sciences",
+      company: "Specialization: IT Consultancy",
+      desc: "T-shaped program focused on consultancy, development, and UX. Internships included implementing HubSpot and PowerApps in SME environments.",
+      date: "September 2022 – Present"
+    }
+  }
+];
+
         let html = '';
         timelineData.forEach((item, index) => {
             const content = item[lang] || item.nl;
