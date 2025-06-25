@@ -106,7 +106,7 @@ a:hover { color: var(--color-accent-hover); }
 .timeline__title { font-size: 1.25rem; }
 .timeline__company { color: var(--color-text-medium); margin-bottom: 1rem; }
 .timeline__description { font-size: 0.95rem; margin-bottom: 0; }
-.timeline__date { position: absolute; top: 5px; right: 0; font-weight: 700; color: var(--color-text-dark); }
+.timeline__date { position: absolute; padding-right: 0.75rem; top: 5px; right: 0; font-weight: 700; color: var(--color-text-dark); }
 .section--dark .timeline__item::before { border-color: var(--color-background-dark); }
 .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 4rem; }
 .expertise-card { background-color: var(--color-background-card); border: 1px solid var(--color-border); padding: 2.5rem; border-radius: 8px; }
