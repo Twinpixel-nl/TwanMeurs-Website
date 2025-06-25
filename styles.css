@@ -173,7 +173,7 @@ a, button, .btn, .timeline__content, .case-study {
 .cursor {
   width: 8px;
   height: 8px;
-  background-color: white; /* Gebruik een duidelijke kleur om te testen */
+  background-color: #B10000; /* Gebruik een duidelijke kleur om te testen */
   border-radius: 50%;
   mix-blend-mode: difference;
   transition: transform 0.2s ease-out, opacity 0.3s ease-out, scale 0.3s ease-out;
@@ -184,7 +184,7 @@ a, button, .btn, .timeline__content, .case-study {
 .cursor-follower {
   width: 32px;
   height: 32px;
-  border: 2px solid white; /* Duidelijke rand om te testen */
+  border: 2px solid #B10000; /* Duidelijke rand om te testen */
   border-radius: 50%;
   mix-blend-mode: difference;
   transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
