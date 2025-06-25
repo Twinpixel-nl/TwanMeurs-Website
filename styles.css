@@ -152,15 +152,15 @@ a:hover { color: var(--color-accent-hover); }
 
 /* ======== 9. CUSTOM CURSOR STIJLEN ======== */
 
-/* Verberg de standaard cursor op de body */
+/* Stap 1: Verberg de standaard cursor overal */
 body {
   cursor: none;
 }
-/* Zorg ervoor dat interactieve elementen ook geen standaard cursor tonen */
 a, button, .btn, .timeline__content, .case-study {
   cursor: none;
 }
 
+/* Stap 2: Stijl voor de cursor-elementen */
 .cursor,
 .cursor-follower {
   position: fixed;
@@ -168,8 +168,7 @@ a, button, .btn, .timeline__content, .case-study {
   left: 0;
   pointer-events: none;
   z-index: 9999;
-  /* Gebruik CSS variabelen die door JS worden ingesteld */
-  transform: translate(-50%, -50%); /* Zorgt voor centreren */
+  transform: translate(-50%, -50%); /* Essentieel voor centreren */
   will-change: transform;
 }
 
@@ -179,8 +178,8 @@ a, button, .btn, .timeline__content, .case-study {
   background-color: white;
   border-radius: 50%;
   mix-blend-mode: difference;
-  transition: transform 0.1s ease-out;
-  /* Pas de transform toe met de variabelen */
+  transition: transform 0.2s ease-out, opacity 0.3s ease-out, scale 0.3s ease-out;
+  /* De positie wordt hier door de JS-variabele ingesteld */
   transform: translate(var(--cursor-x, 0), var(--cursor-y, 0)) translate(-50%, -50%);
 }
 
@@ -190,32 +189,33 @@ a, button, .btn, .timeline__content, .case-study {
   border: 2px solid white;
   border-radius: 50%;
   mix-blend-mode: difference;
-  /* Maak de transitie soepeler voor zowel positie als schaal */
-  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-  /* Pas de transform toe met de variabelen */
+  /* Soepele transitie voor zowel positie als grootte */
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1); 
+  /* De positie wordt hier door de JS-variabele ingesteld */
   transform: translate(var(--follower-x, 0), var(--follower-y, 0)) translate(-50%, -50%);
 }
 
-/* Nu kan de CSS de schaal aanpassen ZONDER de positie te overschrijven! */
+/* Stap 3: Definieer de hover-staat ('groeien') */
 body.cursor-grow .cursor-follower {
   transform: translate(var(--follower-x, 0), var(--follower-y, 0)) translate(-50%, -50%) scale(1.8);
 }
 body.cursor-grow .cursor {
-    transform: translate(var(--cursor-x, 0), var(--cursor-y, 0)) translate(-50%, -50%) scale(0.5);
-    opacity: 0;
+  opacity: 0;
+  transform: translate(var(--cursor-x, 0), var(--cursor-y, 0)) translate(-50%, -50%) scale(0.5);
 }
 
-/* Verberg de cursor op touchscreens of smalle schermen */
+/* Stap 4: Verberg alles op touch/mobiel en zet standaard cursor terug */
 @media (hover: none), (max-width: 768px) {
   .cursor,
   .cursor-follower {
-    display: none !important; /* Gebruik !important om zeker te zijn */
+    display: none !important;
   }
-  /* Zet de standaard cursor terug op deze apparaten */
-  body, a, button, .btn, .timeline__content, .case-study {
+  
+  body, a, button, .btn {
     cursor: auto;
   }
 }
+
 /* ======== 10. KLIK GOLF-EFFECT (RIPPLE) ======== */
 .ripple { position: fixed; border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; animation: ripple-effect 0.6s linear; border: 2px solid var(--color-accent); z-index: 9998; }
 @keyframes ripple-effect { from { transform: translate(-50%, -50%) scale(0); opacity: 1; } to { transform: translate(-50%, -50%) scale(4); opacity: 0; } }
