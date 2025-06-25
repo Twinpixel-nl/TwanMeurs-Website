@@ -1,77 +1,99 @@
-// cursor.js - FINALE VERSIE VOOR TOUCHSCREEN LAPTOPS & DESKTOPS
+// cursor.js - EXPERT VERSIE MET VOLLEDIGE UX-PERFECTIE
 
 (function() {
   'use strict';
 
-  // --- SLIMME DETECTIE ---
-  // Deze check kijkt of het primaire invoerapparaat 'coarse' (ruw, zoals een vinger) is.
-  // Op een laptop met touchscreen is de primaire pointer 'fine' (muis/trackpad), dus dit werkt correct.
-  // Op een telefoon/tablet is de pointer 'coarse', en wordt het script hier gestopt.
-  const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
-  if (isCoarsePointer) {
-    console.log('Primair invoerapparaat is "coarse" (touch). Custom cursor wordt niet geactiveerd.');
-    return; // Stop de uitvoering van de rest van het script
-  }
-
-  // Als de check hier voorbij komt, hebben we te maken met een apparaat dat een muis/trackpad heeft.
-
-  // --- ELEMENTEN ZOEKEN ---
+  // --- CONFIGURATIE & SETUP ---
+  const interactiveElements = 'a, button, .btn, .timeline__content, .case-study';
+  const textInputElements = 'input[type="text"], input[type="email"], input[type="search"], input[type="number"], input[type="password"], textarea';
+  
   const cursor = document.querySelector('.cursor');
   const follower = document.querySelector('.cursor-follower');
   
-  // Extra veiligheidscheck voor als de HTML-elementen ontbreken.
   if (!cursor || !follower) {
-    console.error('Custom cursor HTML-elementen (.cursor of .cursor-follower) niet gevonden in de DOM.');
+    console.error('Custom cursor HTML-elementen niet gevonden.');
     return;
   }
-  
-  // --- VARIABELEN INITIALISEREN ---
+
+  // --- STATE & VARIABELEN ---
   let mouseX = 0, mouseY = 0;
   let posX = 0, posY = 0;
+  let isFirstMove = true; // Houdt bij of de muis voor het eerst beweegt
 
-  // --- EVENT LISTENER VOOR MUISPOSITIE ---
-  // Slaat de positie van de muis op zodra deze beweegt.
+  // --- DEVICE & POINTER CHECK ---
+  // Stopt het script op apparaten zonder fijne pointer (muis/trackpad)
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    console.log('Coarse pointer gedetecteerd. Custom cursor wordt uitgeschakeld.');
+    return;
+  }
+
+  // --- EVENT LISTENERS ---
+
+  // 1. EERSTE MUISBEWEGING: Maakt de cursor zichtbaar
   document.addEventListener('mousemove', e => {
+    if (isFirstMove) {
+      document.body.classList.add('cursor-active');
+      isFirstMove = false;
+    }
     mouseX = e.clientX;
     mouseY = e.clientY;
   });
 
-  // --- DE ANIMATIE-LOOP ---
-  function animateCursor() {
-    // Gebruik de 'setProperty' methode die samenwerkt met de moderne CSS.
-    
-    // De stip volgt de muis direct.
-    cursor.style.setProperty('--cursor-x', mouseX + 'px');
-    cursor.style.setProperty('--cursor-y', mouseY + 'px');
-    
-    // De follower volgt met een "lerp" (linear interpolation) voor een soepel, vertraagd effect.
-    posX += (mouseX - posX) * 0.2;
-    posY += (mouseY - posY) * 0.2;
-    
-    follower.style.setProperty('--follower-x', posX + 'px');
-    follower.style.setProperty('--follower-y', posY + 'px');
+  // 2. VERLAAT & BETREEDT BROWSERVENSTER: Verbergt/toont de cursor
+  document.addEventListener('mouseleave', () => {
+    document.body.classList.remove('cursor-active');
+  });
+  document.addEventListener('mouseenter', () => {
+    document.body.classList.add('cursor-active');
+  });
 
-    // Roep de functie opnieuw aan voor de volgende frame voor een vloeiende animatie.
-    requestAnimationFrame(animateCursor);
-  }
-  // Start de animatie-loop.
-  animateCursor();
+  // 3. KLIK-FEEDBACK: Krimpt de cursor bij een muisklik
+  document.addEventListener('mousedown', () => {
+    document.body.classList.add('cursor-down');
+  });
+  document.addEventListener('mouseup', () => {
+    document.body.classList.remove('cursor-down');
+  });
 
-
-  // --- HOVER EFFECTEN ---
-  const interactiveElements = 'a, button, .btn, .timeline__content, .case-study';
-  
-  // Gebruik 'mouseover' op de body om efficiënt alle hovers te vangen.
+  // 4. HOVER-EFFECTEN: Groeien of verbergen bij specifieke elementen
   document.body.addEventListener('mouseover', e => {
-    // 'closest' controleert of het element waar de muis overheen is (of een van zijn ouders)
-    // overeenkomt met de interactieve elementen.
     if (e.target.closest(interactiveElements)) {
       document.body.classList.add('cursor-grow');
+      document.body.classList.remove('cursor-text');
+    } else if (e.target.closest(textInputElements)) {
+      document.body.classList.add('cursor-text');
+      document.body.classList.remove('cursor-grow');
     } else {
       document.body.classList.remove('cursor-grow');
+      document.body.classList.remove('cursor-text');
     }
   });
 
-  console.log('Custom cursor (desktop) succesvol geïnitialiseerd.');
+  // 5. RIPPLE-EFFECT BIJ KLIK
+  document.addEventListener('click', e => {
+    const ripple = document.createElement('div');
+    ripple.classList.add('ripple');
+    document.body.appendChild(ripple);
+    ripple.style.left = `${e.clientX}px`;
+    ripple.style.top = `${e.clientY}px`;
+    setTimeout(() => ripple.remove(), 600);
+  });
 
-})(); // Einde van de IIFE
+  // --- DE ANIMATIE-LOOP ---
+  const animateCursor = () => {
+    posX += (mouseX - posX) * 0.2;
+    posY += (mouseY - posY) * 0.2;
+    
+    cursor.style.setProperty('--cursor-x', `${mouseX}px`);
+    cursor.style.setProperty('--cursor-y', `${mouseY}px`);
+    
+    follower.style.setProperty('--follower-x', `${posX}px`);
+    follower.style.setProperty('--follower-y', `${posY}px`);
+    
+    requestAnimationFrame(animateCursor);
+  };
+  animateCursor();
+
+  console.log('Expert custom cursor & ripple effect succesvol geïnitialiseerd.');
+
+})();

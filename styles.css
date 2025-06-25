@@ -148,13 +148,17 @@ a:hover { color: var(--color-accent-hover); }
 .reveal--delay-2 { transition-delay: 300ms; }
 .reveal--delay-3 { transition-delay: 450ms; }
 
-/* ======== 9. CUSTOM CURSOR STIJLEN (MODERNE VERSIE) ======== */
+/* ======== 9. CUSTOM CURSOR STIJLEN (EXPERT VERSIE) ======== */
 
 body {
   cursor: none;
 }
 a, button, .btn, .timeline__content, .case-study {
   cursor: none;
+}
+/* Laat de standaard tekst-cursor zien op input velden */
+input[type="text"], input[type="email"], textarea {
+  cursor: text;
 }
 
 .cursor,
@@ -164,52 +168,63 @@ a, button, .btn, .timeline__content, .case-study {
   left: 0;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
+  
+  /* Standaard onzichtbaar: opacity 0, schaal 0 */
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  
   will-change: transform;
-  display: block; /* Zeker weten dat het zichtbaar is */
-  opacity: 1; /* Zeker weten dat het zichtbaar is */
+}
+
+/* Wanneer de muis actief is, maak de cursor zichtbaar */
+body.cursor-active .cursor,
+body.cursor-active .cursor-follower {
+  opacity: 1;
+  transform: translate(var(--follower-x, 0), var(--follower-y, 0)) translate(-50%, -50%) scale(1);
+}
+body.cursor-active .cursor {
+   transform: translate(var(--cursor-x, 0), var(--cursor-y, 0)) translate(-50%, -50%) scale(1);
 }
 
 .cursor {
   width: 8px;
   height: 8px;
-  background-color: #B10000; /* Gebruik een duidelijke kleur om te testen */
+  background-color: #B10000;
   border-radius: 50%;
   mix-blend-mode: difference;
-  transition: transform 0.2s ease-out, opacity 0.3s ease-out, scale 0.3s ease-out;
-  /* Deze regel luistert naar de JS */
-  transform: translate(var(--cursor-x, 0), var(--cursor-y, 0)) translate(-50%, -50%);
 }
 
 .cursor-follower {
   width: 32px;
   height: 32px;
-  border: 2px solid #B10000; /* Duidelijke rand om te testen */
+  border: 2px solid #B10000;
   border-radius: 50%;
   mix-blend-mode: difference;
-  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-  /* Deze regel luistert naar de JS */
-  transform: translate(var(--follower-x, 0), var(--follower-y, 0)) translate(-50%, -50%);
+  /* Vertraagde transitie voor de positie */
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.3s ease, background-color 0.3s ease;
 }
 
-body.cursor-grow .cursor-follower {
-  transform: translate(var(--follower-x, 0), var(--follower-y, 0)) translate(-50%, -50%) scale(1.8);
+/* Groei-effect bij hovers */
+body.cursor-grow.cursor-active .cursor-follower {
+  transform: translate(var(--follower-x, 0), var(--follower-y, 0)) translate(-50%, -50%) scale(2.5);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: transparent;
 }
-
-body.cursor-grow .cursor {
+body.cursor-grow.cursor-active .cursor {
   opacity: 0;
-  transform: translate(var(--cursor-x, 0), var(--cursor-y, 0)) translate(-50%, -50%) scale(0.5);
 }
 
-/* Verberg op touch-apparaten */
-@media (hover: none), (max-width: 768px) {
-  .cursor,
-  .cursor-follower {
-    display: none !important;
-  }
-  body, a, button, .btn {
-    cursor: auto;
-  }
+/* Krimp-effect bij klikken */
+body.cursor-down.cursor-active .cursor-follower {
+   transform: translate(var(--follower-x, 0), var(--follower-y, 0)) translate(-50%, -50%) scale(0.7);
+}
+
+/* Verberg-effect bij tekstvelden */
+body.cursor-text.cursor-active .cursor,
+body.cursor-text.cursor-active .cursor-follower {
+  opacity: 0;
+  transform: translate(var(--follower-x, 0), var(--follower-y, 0)) translate(-50%, -50%) scale(0);
 }
 
 /* ======== 10. KLIK GOLF-EFFECT (RIPPLE) ======== */
