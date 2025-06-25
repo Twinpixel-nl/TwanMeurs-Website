@@ -35,21 +35,21 @@ const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints
             aboutP3: "Mijn aanpak is analytisch, pragmatisch en mensgericht. Ik werk vanuit structuur, denk in mogelijkheden, en houd altijd oog voor het einddoel. Of het nu gaat om procesverbetering, AI-chatbots, systeemontwerp of verandervraagstukken - ik maak technologie begrijpelijk, bestuurbaar én strategisch waardevol.",
             aboutImageAlt: "Professioneel portret van Twan Meurs",
 
-            // Projecten
-            projectsTitle: "Uitgelichte Projecten",
-            parChallenge: "Uitdaging:",
-            parAction: "Actie:",
-            parImpact: "Impact:",
-            p1Title: "Procesoptimalisatie & Advies",
-            p1Client: "Rol: Service Consultant @ Wageningse Universiteit",
-            p1Challenge: " De noodzaak om diverse IT-processen binnen de universiteit te verbeteren en de beschikbare middelen effectiever in te zetten.",
-            p1Action: " Ik modelleerde bestaande processen, stelde concrete adviesrapporten op voor de IT-afdeling en inventariseerde de volledige audiovisuele infrastructuur.",
-            p1Impact: " Direct bijgedragen aan de efficiëntie van de IT-afdeling en een helder strategisch overzicht gecreëerd voor toekomstige investeringen en verbeteringen.",
-            p2Title: "Bestuurlijke Vertegenwoordiging & Eventmanagement",
-            p2Client: "Rol: Student Assessor @ Christelijke Hogeschool Ede",
-            p2Challenge: " De stem van studenten effectief vertegenwoordigen op bestuursniveau en de studentengemeenschap versterken.",
-            p2Action: " Ik nam deel aan de medezeggenschapsraad, leverde input op beleidsdocumenten en organiseerde grootschalige evenementen zoals het Winter Gala en Zomernacht Gala.",
-            p2Impact: " Zorgde voor directe invloed van studenten op het hogeschoolbeleid en verhoogde de betrokkenheid en tevredenheid binnen de studentengemeenschap.",
+          // Projecten
+projectsTitle: "Uitgelichte Projecten",
+parChallenge: "Uitdaging:",
+parAction: "Aanpak:",
+parImpact: "Impact:",
+p1Title: "Procesoptimalisatie & Strategisch Advies",
+p1Client: "Rol: Service Consultant @ Wageningen University & Research",
+p1Challenge: " De universiteit had behoefte aan verbetering van IT-processen en een effectiever gebruik van beschikbare technologische middelen.",
+p1Action: " Ik analyseerde en modelleerde bestaande processen, stelde concrete adviesrapporten op voor de IT-afdeling en bracht de volledige audiovisuele infrastructuur in kaart om knelpunten en optimalisaties te signaleren.",
+p1Impact: " Bijgedragen aan meer efficiëntie binnen de IT-afdeling en een strategische basis gelegd voor toekomstige investeringen, tooling en procesverbeteringen.",
+p2Title: "Studentvertegenwoordiging & Community Engagement",
+p2Client: "Rol: Student Assessor @ Christelijke Hogeschool Ede",
+p2Challenge: " De stem van studenten op bestuursniveau versterken en de verbondenheid binnen de studentengemeenschap vergroten.",
+p2Action: " Ik vertegenwoordigde studenten in het College van Bestuur, leverde inhoudelijke bijdragen aan beleidsdocumenten en coördineerde grootschalige evenementen zoals het Winter Gala en de Zomernacht.",
+p2Impact: " Zorgde voor directe studentbetrokkenheid bij bestuursbesluiten en versterkte de zichtbaarheid, samenhang en betrokkenheid binnen de studentengemeenschap.",
 
             // Loopbaan & Opleiding
             careerTitle: "Loopbaan & Opleiding",
@@ -101,23 +101,23 @@ const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints
              aboutP2: "What sets me apart is my dual focus: I understand the technical side and speak the language of governance and policy. As a student representative on the Executive Board of CHE and founder of the student association NULL, I know how to connect people and build support. I combine this governance experience with projects at WUR, TwinPixel, and external clients.",
              aboutP3: "My approach is analytical, pragmatic, and people-oriented. I work with structure, think in terms of opportunities, and always keep the end goal in sight. Whether it’s process improvement, AI chatbots, system design, or organizational change - I make technology understandable, governable, and strategically valuable.",
              aboutImageAlt: "Professional portrait of Twan Meurs",
- 
-             // Projects
-             projectsTitle: "Featured Projects",
-             parChallenge: "Challenge:",
-             parAction: "Action:",
-             parImpact: "Impact:",
-             p1Title: "Process Optimization & Advisory",
-             p1Client: "Role: Service Consultant @ Wageningen University",
-             p1Challenge: " The need to improve various IT processes within the university and to utilize available resources more effectively.",
-             p1Action: " I modeled existing processes, drafted concrete advisory reports for the IT department, and inventoried the complete audio-visual infrastructure.",
-             p1Impact: " Directly contributed to the efficiency of the IT department and created a clear strategic overview for future investments and improvements.",
-             p2Title: "Administrative Representation & Event Management",
-             p2Client: "Role: Student Assessor @ CHE University of Applied Sciences",
-             p2Challenge: " To effectively represent the student voice at the administrative level and to strengthen the student community.",
-             p2Action: " I participated in the co-determination council, provided input on policy documents, and organized large-scale events such as the Winter Gala and Summer Night Gala.",
-             p2Impact: " Ensured direct student influence on university policy and increased engagement and satisfaction within the student community.",
- 
+ // Projects
+projectsTitle: "Featured Projects",
+parChallenge: "Challenge:",
+parAction: "Approach:",
+parImpact: "Impact:",
+p1Title: "Process Optimization & Strategic Advisory",
+p1Client: "Role: Service Consultant @ Wageningen University & Research",
+p1Challenge: " The university needed to improve IT processes and make more strategic use of its available technological resources.",
+p1Action: " I analyzed and modeled key processes, created actionable advisory reports for the IT department, and conducted a full inventory of the audiovisual infrastructure to identify bottlenecks and optimization opportunities.",
+p1Impact: " Strengthened the IT department's operational efficiency and provided a strategic foundation for future investments, tooling, and process improvements.",
+p2Title: "Student Governance & Community Engagement",
+p2Client: "Role: Student Assessor @ CHE University of Applied Sciences",
+p2Challenge: " Amplifying the student voice at the executive level while fostering community and representation across the student body.",
+p2Action: " I contributed to the Executive Board as student assessor, co-authored policy documents, and coordinated flagship events such as the Winter Gala and Summer Night Gala to boost student involvement.",
+p2Impact: " Drove greater student influence on university governance and improved the visibility, cohesion, and engagement of the student community.",
+
+
              // Career & Education
              careerTitle: "Career & Education",
  
