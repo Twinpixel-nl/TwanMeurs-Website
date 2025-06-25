@@ -148,13 +148,15 @@ a:hover { color: var(--color-accent-hover); }
 .reveal--delay-2 { transition-delay: 300ms; }
 .reveal--delay-3 { transition-delay: 450ms; }
 
-/* ======== 9. CUSTOM CURSOR STIJLEN (WERKENDE VERSIE) ======== */
+/* ======== 9. CUSTOM CURSOR STIJLEN (MODERNE VERSIE) ======== */
+
 body {
   cursor: none;
 }
 a, button, .btn, .timeline__content, .case-study {
   cursor: none;
 }
+
 .cursor,
 .cursor-follower {
   position: fixed;
@@ -164,31 +166,50 @@ a, button, .btn, .timeline__content, .case-study {
   z-index: 9999;
   transform: translate(-50%, -50%);
   will-change: transform;
+  display: block; /* Zeker weten dat het zichtbaar is */
+  opacity: 1; /* Zeker weten dat het zichtbaar is */
 }
+
 .cursor {
   width: 8px;
   height: 8px;
-  background-color: white;
+  background-color: white; /* Gebruik een duidelijke kleur om te testen */
   border-radius: 50%;
   mix-blend-mode: difference;
   transition: transform 0.2s ease-out, opacity 0.3s ease-out, scale 0.3s ease-out;
+  /* Deze regel luistert naar de JS */
   transform: translate(var(--cursor-x, 0), var(--cursor-y, 0)) translate(-50%, -50%);
 }
+
 .cursor-follower {
   width: 32px;
   height: 32px;
-  border: 2px solid white;
+  border: 2px solid white; /* Duidelijke rand om te testen */
   border-radius: 50%;
   mix-blend-mode: difference;
   transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  /* Deze regel luistert naar de JS */
   transform: translate(var(--follower-x, 0), var(--follower-y, 0)) translate(-50%, -50%);
 }
+
 body.cursor-grow .cursor-follower {
   transform: translate(var(--follower-x, 0), var(--follower-y, 0)) translate(-50%, -50%) scale(1.8);
 }
+
 body.cursor-grow .cursor {
   opacity: 0;
   transform: translate(var(--cursor-x, 0), var(--cursor-y, 0)) translate(-50%, -50%) scale(0.5);
+}
+
+/* Verberg op touch-apparaten */
+@media (hover: none), (max-width: 768px) {
+  .cursor,
+  .cursor-follower {
+    display: none !important;
+  }
+  body, a, button, .btn {
+    cursor: auto;
+  }
 }
 
 /* ======== 10. KLIK GOLF-EFFECT (RIPPLE) ======== */

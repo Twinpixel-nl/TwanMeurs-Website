@@ -1,66 +1,65 @@
-// cursor.js - DE CORRECTE VERSIE VOOR JOUW CSS
+// cursor.js - FINALE, ZELFSTANDIGE VERSIE
 
-function isTouchDevice() {
-  return (
-    'ontouchstart' in window ||
-    navigator.maxTouchPoints > 0 ||
-    window.matchMedia('(pointer: coarse)').matches
-  );
-}
+(function() {
+  'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const cursor = document.querySelector('.cursor');
-  const follower = document.querySelector('.cursor-follower');
-  const interactiveElements = 'a, button, .btn, .timeline__content, .case-study';
-
-  if (!cursor || !follower) {
-    console.error('Cursor elementen niet gevonden!');
-    return;
-  }
-
-  // Verberg op touch devices of smalle schermen
-  if (isTouchDevice() || window.innerWidth < 768) {
-    cursor.style.display = 'none';
-    follower.style.display = 'none';
-    return;
-  }
-
-  let mouseX = 0;
-  let mouseY = 0;
-  let posX = 0;
-  let posY = 0;
-
-  // Cursor (kleine stip) direct laten volgen
-  document.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    // Deze regel past de positie van de kleine stip direct aan
-    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-  });
-
-  // Follower (grote cirkel) met vertraging
-  function follow() {
-    // Bereken de vertraagde positie
-    posX += (mouseX - posX) * 0.2;
-    posY += (mouseY - posY) * 0.2;
-    
-    // Deze regel past de positie van de grote cirkel direct aan
-    follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
-    
-    // Roep de volgende frame aan voor een soepele animatie
-    requestAnimationFrame(follow);
-  }
+  // Wacht tot de basis van de pagina geladen is. Een kleine vertraging kan soms helpen.
+  // Als dit niet werkt, probeer de regel hieronder te vervangen door: document.addEventListener('DOMContentLoaded', () => { ... });
+  window.addEventListener('load', () => {
   
-  // Start de animatie-loop
-  follow();
-
-  // Hover effect op interactieve elementen
-  document.body.addEventListener('mouseover', e => {
-    if (e.target.closest(interactiveElements)) {
-      document.body.classList.add('cursor-grow');
-    } else {
-      document.body.classList.remove('cursor-grow');
+    const cursor = document.querySelector('.cursor');
+    const follower = document.querySelector('.cursor-follower');
+    
+    if (!cursor || !follower) {
+      console.error('Custom cursor HTML-elementen (.cursor of .cursor-follower) zijn niet in de HTML gevonden. Script stopt.');
+      return;
     }
-  });
-});
+    
+    function isTouchDevice() {
+      return ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    }
+
+    if (isTouchDevice() || window.innerWidth < 768) {
+      cursor.style.display = 'none';
+      follower.style.display = 'none';
+      return;
+    }
+
+    let mouseX = 0, mouseY = 0;
+    let posX = 0, posY = 0;
+
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animateCursor() {
+      // Gebruik de `setProperty` methode voor de moderne CSS
+      cursor.style.setProperty('--cursor-x', mouseX + 'px');
+      cursor.style.setProperty('--cursor-y', mouseY + 'px');
+      
+      posX += (mouseX - posX) * 0.2;
+      posY += (mouseY - posY) * 0.2;
+      
+      follower.style.setProperty('--follower-x', posX + 'px');
+      follower.style.setProperty('--follower-y', posY + 'px');
+
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    const interactiveElements = 'a, button, .btn, .timeline__content, .case-study';
+    
+    document.body.addEventListener('mouseover', e => {
+      if (e.target.closest(interactiveElements)) {
+        document.body.classList.add('cursor-grow');
+      } else {
+        document.body.classList.remove('cursor-grow');
+      }
+    });
+
+    console.log('Custom cursor script succesvol geïnitialiseerd.');
+
+  }); // Einde van de window.load listener
+
+})();
