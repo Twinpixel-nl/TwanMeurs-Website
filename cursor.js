@@ -1,3 +1,5 @@
+// cursor.js - DE CORRECTE VERSIE VOOR JOUW CSS
+
 function isTouchDevice() {
   return (
     'ontouchstart' in window ||
@@ -11,43 +13,49 @@ document.addEventListener('DOMContentLoaded', () => {
   const follower = document.querySelector('.cursor-follower');
   const interactiveElements = 'a, button, .btn, .timeline__content, .case-study';
 
-  // Belangrijke check: stop als de HTML-elementen niet bestaan
   if (!cursor || !follower) {
-    console.error('Custom cursor HTML elements (.cursor or .cursor-follower) not found!');
+    console.error('Cursor elementen niet gevonden!');
     return;
   }
 
+  // Verberg op touch devices of smalle schermen
   if (isTouchDevice() || window.innerWidth < 768) {
     cursor.style.display = 'none';
     follower.style.display = 'none';
     return;
   }
 
-  let mouseX = 0, mouseY = 0;
-  let posX = 0, posY = 0;
+  let mouseX = 0;
+  let mouseY = 0;
+  let posX = 0;
+  let posY = 0;
 
+  // Cursor (kleine stip) direct laten volgen
   document.addEventListener('mousemove', e => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    
+    // Deze regel past de positie van de kleine stip direct aan
+    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
   });
-  
-  function animateCursor() {
-    // Stel de CSS-variabelen in voor de stip
-    cursor.style.setProperty('--cursor-x', mouseX + 'px');
-    cursor.style.setProperty('--cursor-y', mouseY + 'px');
 
-    // Bereken de vertraagde positie voor de follower
+  // Follower (grote cirkel) met vertraging
+  function follow() {
+    // Bereken de vertraagde positie
     posX += (mouseX - posX) * 0.2;
     posY += (mouseY - posY) * 0.2;
     
-    // Stel de CSS-variabelen in voor de follower
-    follower.style.setProperty('--follower-x', posX + 'px');
-    follower.style.setProperty('--follower-y', posY + 'px');
-
-    requestAnimationFrame(animateCursor);
+    // Deze regel past de positie van de grote cirkel direct aan
+    follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
+    
+    // Roep de volgende frame aan voor een soepele animatie
+    requestAnimationFrame(follow);
   }
-  animateCursor();
+  
+  // Start de animatie-loop
+  follow();
 
+  // Hover effect op interactieve elementen
   document.body.addEventListener('mouseover', e => {
     if (e.target.closest(interactiveElements)) {
       document.body.classList.add('cursor-grow');
