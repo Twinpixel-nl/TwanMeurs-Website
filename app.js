@@ -159,12 +159,7 @@ p2Impact: " Drove greater student influence on university governance and improve
     initParallax();
     updateFooterYear();
 
-    // DE BELANGRIJKE CHECK: Laad muis-specifieke features alleen op non-touch apparaten
-    if (!isTouchDevice()) {
-        document.body.classList.add('no-touch');
-        initCustomCursor();
-        initClickRippleEffect();
-    }
+  
 });
 
     /**
@@ -212,21 +207,7 @@ p2Impact: " Drove greater student influence on university governance and improve
         });
     }
 
-    /**
-     * FUNCTIE: KLIK GOLF-EFFECT (RIPPLE)
-     */
-    function initClickRippleEffect() {
-        document.addEventListener('click', (e) => {
-            const ripple = document.createElement('div');
-            ripple.classList.add('ripple');
-            document.body.appendChild(ripple);
-            ripple.style.left = `${e.clientX}px`;
-            ripple.style.top = `${e.clientY}px`;
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-    }
+   
     
     /**
      * FUNCTIE: TAALWISSELAAR
@@ -483,41 +464,7 @@ p2Impact: " Drove greater student influence on university governance and improve
         });
     }
 
-    /**
-     * FUNCTIE: CUSTOM CURSOR
-     */
-function initCustomCursor() {
-    const cursor = document.querySelector('.cursor');
-    const follower = document.querySelector('.cursor-follower');
-    if (!cursor || !follower) return;
 
-    // Maak de cursor-elementen zichtbaar (ze zijn standaard verborgen)
-    cursor.style.display = 'block';
-    follower.style.display = 'block';
-    
-    const interactiveElements = 'a, .btn, button, .timeline__content, .case-study';
-    let posX = 0, posY = 0;
-    let mouseX = 0, mouseY = 0;
-    window.addEventListener('mousemove', e => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-    const followMouse = () => {
-        posX += (mouseX - posX) * 0.2;
-        posY += (mouseY - posY) * 0.2;
-        cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-        follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
-        requestAnimationFrame(followMouse);
-    };
-    followMouse();
-    document.body.addEventListener('mouseover', (e) => {
-        if (e.target.closest(interactiveElements)) {
-            document.body.classList.add('cursor-grow');
-        } else {
-             document.body.classList.remove('cursor-grow');
-        }
-    });
-}
 
     /**
      * FUNCTIE: DYNAMISCH JAARTAL IN FOOTER
