@@ -17,7 +17,7 @@
   --color-text-dark: #737373;
   --color-accent: #B10000;
   --color-accent-hover: #8a0000;
-  --color-whatsapp: #25D366;
+  --color-whatsapp: #B10000;
   --header-height: 80px;
   --transition-fast: 0.2s ease-in-out;
   --transition-medium: 0.4s ease-in-out;
@@ -139,7 +139,7 @@ a:hover { color: var(--color-accent-hover); }
 
 /* ======== 7. WHATSAPP KNOP ======== */
 .whatsapp-btn { position: fixed; bottom: 1.5rem; right: 1.5rem; background-color: var(--color-whatsapp); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 15px rgba(0,0,0,0.3); z-index: 999; transition: transform var(--transition-fast), background-color var(--transition-fast); }
-.whatsapp-btn:hover { transform: scale(1.1); background-color: #21b85b; }
+.whatsapp-btn:hover { transform: scale(1.1); background-color: #8a0000; }
 .whatsapp-btn svg { width: 32px; height: 32px; fill: white; }
 
 /* ======== 8. ANIMATIE SYSTEEM ======== */
