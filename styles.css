@@ -151,23 +151,7 @@ a:hover { color: var(--color-accent-hover); }
 .reveal--delay-3 { transition-delay: 450ms; }
 
 /* ======== 9. CUSTOM CURSOR STIJLEN ======== */
-/* NIEUWE, GECORRIGEERDE CODE */
-/* Verberg de standaard cursor alleen op non-touch apparaten */
-body.no-touch {
-    cursor: none;
-}
-body.no-touch a,
-body.no-touch .btn,
-body.no-touch button,
-body.no-touch .timeline__content,
-body.no-touch .case-study {
-    cursor: none;
-}
 
-/* Verberg de custom cursor elementen standaard */
-.cursor, .cursor-follower {
-    display: none;
-}
 .cursor, .cursor-follower { position: fixed; top: 0; left: 0; pointer-events: none; border-radius: 50%; z-index: 9999; background-color: var(--color-accent); transition: transform 0.2s ease-out, opacity 0.3s ease, width 0.3s ease, height 0.3s ease; }
 .cursor { width: 8px; height: 8px; }
 .cursor-follower { width: 30px; height: 30px; background-color: rgba(177, 0, 0, 0.3); transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.3s ease, width 0.4s ease, height 0.4s ease; }
