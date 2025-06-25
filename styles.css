@@ -1,7 +1,6 @@
 /*
   STYLESHEET VOOR TWAN MEURS - PERSOONLIJKE WEBSITE
   Versie: 7.4 (Definitief & Compleet - Mobile Overlay Fix)
-  CORRECTED VERSION WITH WORKING CURSOR
 */
 
 /* ======== 1. ALGEMENE STIJLEN & VARIABELEN ======== */
@@ -18,7 +17,7 @@
   --color-text-dark: #737373;
   --color-accent: #B10000;
   --color-accent-hover: #8a0000;
-  --color-whatsapp: #B10000;
+  --color-whatsapp: #25D366;
   --header-height: 80px;
   --transition-fast: 0.2s ease-in-out;
   --transition-medium: 0.4s ease-in-out;
@@ -42,7 +41,10 @@ a:hover { color: var(--color-accent-hover); }
 .header.scrolled { background-color: rgba(15, 15, 15, 0.9); }
 .header__container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
 .header__logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-.header__logo-icon { height: 50px; width: auto; }
+.header__logo-icon {
+    height: 50px; /* Stelt de hoogte van het logo in */
+    width: auto;  /* Zorgt ervoor dat de breedte automatisch schaalt */
+}
 .header__logo-text { font-family: var(--font-secondary); font-size: 1.5rem; color: var(--color-text-light); }
 .header__menu { display: flex; align-items: center; gap: 2.5rem; }
 .header__nav { display: flex; gap: 2rem; }
@@ -104,7 +106,7 @@ a:hover { color: var(--color-accent-hover); }
 .timeline__title { font-size: 1.25rem; }
 .timeline__company { color: var(--color-text-medium); margin-bottom: 1rem; }
 .timeline__description { font-size: 0.95rem; margin-bottom: 0; }
-.timeline__date { position: absolute; padding-right: 0.75rem; top: 5px; right: 0; font-weight: 700; color: var(--color-text-dark); }
+.timeline__date { position: absolute; top: 5px; right: 0; font-weight: 700; color: var(--color-text-dark); }
 .section--dark .timeline__item::before { border-color: var(--color-background-dark); }
 .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 4rem; }
 .expertise-card { background-color: var(--color-background-card); border: 1px solid var(--color-border); padding: 2.5rem; border-radius: 8px; }
@@ -137,7 +139,7 @@ a:hover { color: var(--color-accent-hover); }
 
 /* ======== 7. WHATSAPP KNOP ======== */
 .whatsapp-btn { position: fixed; bottom: 1.5rem; right: 1.5rem; background-color: var(--color-whatsapp); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 15px rgba(0,0,0,0.3); z-index: 999; transition: transform var(--transition-fast), background-color var(--transition-fast); }
-.whatsapp-btn:hover { transform: scale(1.1); background-color: #8a0000; }
+.whatsapp-btn:hover { transform: scale(1.1); background-color: #21b85b; }
 .whatsapp-btn svg { width: 32px; height: 32px; fill: white; }
 
 /* ======== 8. ANIMATIE SYSTEEM ======== */
@@ -148,67 +150,25 @@ a:hover { color: var(--color-accent-hover); }
 .reveal--delay-2 { transition-delay: 300ms; }
 .reveal--delay-3 { transition-delay: 450ms; }
 
-/* ======== 9. CUSTOM CURSOR STIJLEN (WERKENDE VERSIE) ======== */
-body {
-  cursor: none;
-}
-a, button, .btn, .timeline__content, .case-study {
-  cursor: none;
-}
-.cursor,
-.cursor-follower {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  will-change: transform;
-}
-.cursor {
-  width: 8px;
-  height: 8px;
-  background-color: white;
-  border-radius: 50%;
-  mix-blend-mode: difference;
-  transition: transform 0.2s ease-out, opacity 0.3s ease-out, scale 0.3s ease-out;
-  transform: translate(var(--cursor-x, 0), var(--cursor-y, 0)) translate(-50%, -50%);
-}
-.cursor-follower {
-  width: 32px;
-  height: 32px;
-  border: 2px solid white;
-  border-radius: 50%;
-  mix-blend-mode: difference;
-  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-  transform: translate(var(--follower-x, 0), var(--follower-y, 0)) translate(-50%, -50%);
-}
-body.cursor-grow .cursor-follower {
-  transform: translate(var(--follower-x, 0), var(--follower-y, 0)) translate(-50%, -50%) scale(1.8);
-}
-body.cursor-grow .cursor {
-  opacity: 0;
-  transform: translate(var(--cursor-x, 0), var(--cursor-y, 0)) translate(-50%, -50%) scale(0.5);
-}
+/* ======== 9. CUSTOM CURSOR STIJLEN ======== */
+body { cursor: none; }
+a, .btn, button, .timeline__content, .case-study { cursor: none; }
+.cursor, .cursor-follower { position: fixed; top: 0; left: 0; pointer-events: none; border-radius: 50%; z-index: 9999; background-color: var(--color-accent); transition: transform 0.2s ease-out, opacity 0.3s ease, width 0.3s ease, height 0.3s ease; }
+.cursor { width: 8px; height: 8px; }
+.cursor-follower { width: 30px; height: 30px; background-color: rgba(177, 0, 0, 0.3); transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.3s ease, width 0.4s ease, height 0.4s ease; }
+body.cursor-grow .cursor { opacity: 0; }
+body.cursor-grow .cursor-follower { width: 60px; height: 60px; background-color: rgba(177, 0, 0, 0.2); border: 1px solid rgba(177, 0, 0, 0.5); }
 
 /* ======== 10. KLIK GOLF-EFFECT (RIPPLE) ======== */
 .ripple { position: fixed; border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; animation: ripple-effect 0.6s linear; border: 2px solid var(--color-accent); z-index: 9998; }
 @keyframes ripple-effect { from { transform: translate(-50%, -50%) scale(0); opacity: 1; } to { transform: translate(-50%, -50%) scale(4); opacity: 0; } }
 
 /* ======== 11. RESPONSIVITEIT & MOBIELE NAVIGATIE ======== */
-@media (hover: none), (max-width: 768px) {
-  .cursor,
-  .cursor-follower {
-    display: none !important;
-  }
-  body, a, button, .btn {
-    cursor: auto;
-  }
-}
 @media (max-width: 850px) {
-    .header__logo-text { display: none; }
+    .header__logo-text { display: none; } 
     .header__menu { display: none; }
     .header__toggle { display: block; }
+
     .header--open .header__menu {
         display: flex;
         position: fixed;
@@ -224,12 +184,18 @@ body.cursor-grow .cursor {
         gap: 2.5rem;
         animation: fadeInMenu 0.4s ease;
     }
-    @keyframes fadeInMenu { from { opacity: 0; } to { opacity: 1; } }
+
+    @keyframes fadeInMenu {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
     .header--open .header__nav {
         flex-direction: column;
         text-align: center;
         gap: 1.5rem;
     }
+
     .header--open .nav-link {
         font-size: 1.5rem;
         color: var(--color-text-light);
@@ -237,18 +203,31 @@ body.cursor-grow .cursor {
         transform: translateY(20px);
         animation: fadeInUpMenuLink 0.4s ease forwards;
     }
-    @keyframes fadeInUpMenuLink { to { opacity: 1; transform: translateY(0); } }
+
+    @keyframes fadeInUpMenuLink {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
     .header--open .header__nav a:nth-child(1) { animation-delay: 0.1s; }
     .header--open .header__nav a:nth-child(2) { animation-delay: 0.2s; }
     .header--open .header__nav a:nth-child(3) { animation-delay: 0.3s; }
     .header--open .header__nav a:nth-child(4) { animation-delay: 0.4s; }
     .header--open .header__nav a:nth-child(5) { animation-delay: 0.5s; }
-    .header--open .header__language { margin-top: 1rem; font-size: 1.2rem; }
+    
+    .header--open .header__language {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+    }
+    
     .timeline { padding-left: 0; margin-left: 1.5rem; }
     .timeline::before { left: -1.5rem; }
     .timeline__item::before { left: -2.2rem; }
     .timeline__date { position: static; margin-top: 0.5rem; text-align: right; }
 }
+
 @media (min-width: 768px) {
   .grid-2-col { grid-template-columns: repeat(2, 1fr); }
   .about__text { order: 1; }
