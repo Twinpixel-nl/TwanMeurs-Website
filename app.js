@@ -1,14 +1,15 @@
 /*
   APP.JS - State-of-the-Art Interacties & Vertalingen voor Twan Meurs
-  Versie: 7.1 (Definitief & Compleet - Inclusief Mobiele Header)
+  Versie: 8.3 (FINAAL & COMPLEET)
 */
+
 const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
 (() => {
     'use strict';
 
     /**
      * HET WOORDENBOEK
-     * Bevat alle vertalingen. De sleutels komen exact overeen met de `data-lang-key` attributen in de HTML.
      */
     const languageData = {
         nl: {
@@ -36,20 +37,20 @@ const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints
             aboutImageAlt: "Professioneel portret van Twan Meurs",
 
           // Projecten
-projectsTitle: "Uitgelichte Projecten",
-parChallenge: "Uitdaging:",
-parAction: "Aanpak:",
-parImpact: "Impact:",
-p1Title: "Procesoptimalisatie & Strategisch Advies",
-p1Client: "Rol: IT-Consultant @ Wageningen University & Research",
-p1Challenge: " De universiteit had behoefte aan verbetering van IT-processen en een effectiever gebruik van beschikbare technologische middelen.",
-p1Action: " Ik analyseerde en modelleerde bestaande processen, stelde concrete adviesrapporten op voor de IT-afdeling en bracht de volledige audiovisuele infrastructuur in kaart om knelpunten en optimalisaties te signaleren.",
-p1Impact: " Bijgedragen aan meer efficiëntie binnen de IT-afdeling en een strategische basis gelegd voor toekomstige investeringen, tooling en procesverbeteringen.",
-p2Title: "Studentvertegenwoordiging & Community Engagement",
-p2Client: "Rol: Student Assessor @ Christelijke Hogeschool Ede",
-p2Challenge: " De stem van studenten op bestuursniveau versterken en de verbondenheid binnen de studentengemeenschap vergroten.",
-p2Action: " Ik vertegenwoordigde studenten in het College van Bestuur, leverde inhoudelijke bijdragen aan beleidsdocumenten en coördineerde grootschalige evenementen zoals het Winter Gala en de Zomernacht.",
-p2Impact: " Zorgde voor directe studentbetrokkenheid bij bestuursbesluiten en versterkte de zichtbaarheid, samenhang en betrokkenheid binnen de studentengemeenschap.",
+            projectsTitle: "Uitgelichte Projecten",
+            parChallenge: "Uitdaging:",
+            parAction: "Aanpak:",
+            parImpact: "Impact:",
+            p1Title: "Procesoptimalisatie & Strategisch Advies",
+            p1Client: "Rol: IT-Consultant @ Wageningen University & Research",
+            p1Challenge: " De universiteit had behoefte aan verbetering van IT-processen en een effectiever gebruik van beschikbare technologische middelen.",
+            p1Action: " Ik analyseerde en modelleerde bestaande processen, stelde concrete adviesrapporten op voor de IT-afdeling en bracht de volledige audiovisuele infrastructuur in kaart om knelpunten en optimalisaties te signaleren.",
+            p1Impact: " Bijgedragen aan meer efficiëntie binnen de IT-afdeling en een strategische basis gelegd voor toekomstige investeringen, tooling en procesverbeteringen.",
+            p2Title: "Studentvertegenwoordiging & Community Engagement",
+            p2Client: "Rol: Student Assessor @ Christelijke Hogeschool Ede",
+            p2Challenge: " De stem van studenten op bestuursniveau versterken en de verbondenheid binnen de studentengemeenschap vergroten.",
+            p2Action: " Ik vertegenwoordigde studenten in het College van Bestuur, leverde inhoudelijke bijdragen aan beleidsdocumenten en coördineerde grootschalige evenementen zoals het Winter Gala en de Zomernacht.",
+            p2Impact: " Zorgde voor directe studentbetrokkenheid bij bestuursbesluiten en versterkte de zichtbaarheid, samenhang en betrokkenheid binnen de studentengemeenschap.",
 
             // Loopbaan & Opleiding
             careerTitle: "Loopbaan & Opleiding",
@@ -101,22 +102,21 @@ p2Impact: " Zorgde voor directe studentbetrokkenheid bij bestuursbesluiten en ve
              aboutP2: "What sets me apart is my dual focus: I understand the technical side and speak the language of governance and policy. As a student representative on the Executive Board of CHE and founder of the student association NULL, I know how to connect people and build support. I combine this governance experience with projects at WUR, TwinPixel, and external clients.",
              aboutP3: "My approach is analytical, pragmatic, and people-oriented. I work with structure, think in terms of opportunities, and always keep the end goal in sight. Whether it’s process improvement, AI chatbots, system design, or organizational change - I make technology understandable, governable, and strategically valuable.",
              aboutImageAlt: "Professional portrait of Twan Meurs",
- // Projects
-projectsTitle: "Featured Projects",
-parChallenge: "Challenge:",
-parAction: "Approach:",
-parImpact: "Impact:",
-p1Title: "Process Optimization & Strategic Advisory",
-p1Client: "Role: IT-Consultant @ Wageningen University & Research",
-p1Challenge: " The university needed to improve IT processes and make more strategic use of its available technological resources.",
-p1Action: " I analyzed and modeled key processes, created actionable advisory reports for the IT department, and conducted a full inventory of the audiovisual infrastructure to identify bottlenecks and optimization opportunities.",
-p1Impact: " Strengthened the IT department's operational efficiency and provided a strategic foundation for future investments, tooling, and process improvements.",
-p2Title: "Student Governance & Community Engagement",
-p2Client: "Role: Student Assessor @ CHE University of Applied Sciences",
-p2Challenge: " Amplifying the student voice at the executive level while fostering community and representation across the student body.",
-p2Action: " I contributed to the Executive Board as student assessor, co-authored policy documents, and coordinated flagship events such as the Winter Gala and Summer Night Gala to boost student involvement.",
-p2Impact: " Drove greater student influence on university governance and improved the visibility, cohesion, and engagement of the student community.",
-
+             // Projects
+            projectsTitle: "Featured Projects",
+            parChallenge: "Challenge:",
+            parAction: "Approach:",
+            parImpact: "Impact:",
+            p1Title: "Process Optimization & Strategic Advisory",
+            p1Client: "Role: IT-Consultant @ Wageningen University & Research",
+            p1Challenge: " The university needed to improve IT processes and make more strategic use of its available technological resources.",
+            p1Action: " I analyzed and modeled key processes, created actionable advisory reports for the IT department, and conducted a full inventory of the audiovisual infrastructure to identify bottlenecks and optimization opportunities.",
+            p1Impact: " Strengthened the IT department's operational efficiency and provided a strategic foundation for future investments, tooling, and process improvements.",
+            p2Title: "Student Governance & Community Engagement",
+            p2Client: "Role: Student Assessor @ CHE University of Applied Sciences",
+            p2Challenge: " Amplifying the student voice at the executive level while fostering community and representation across the student body.",
+            p2Action: " I contributed to the Executive Board as student assessor, co-authored policy documents, and coordinated flagship events such as the Winter Gala and Summer Night Gala to boost student involvement.",
+            p2Impact: " Drove greater student influence on university governance and improved the visibility, cohesion, and engagement of the student community.",
 
              // Career & Education
              careerTitle: "Career & Education",
@@ -151,22 +151,22 @@ p2Impact: " Drove greater student influence on university governance and improve
      * INITIALISATIE
      */
     document.addEventListener('DOMContentLoaded', () => {
- initMobileNav();
-    initHeaderScroll();
-    initLanguageSwitcher();
-    initSmoothScrolling();
-    initScrollAnimations();
-    initActiveNavOnScroll();
-    initParallax();
-    updateFooterYear();
+        initMobileNav();
+        initHeaderScroll();
+        initLanguageSwitcher();
+        initSmoothScrolling();
+        initScrollAnimations();
+        initActiveNavOnScroll();
+        initParallax();
+        updateFooterYear();
 
-    // DE BELANGRIJKE CHECK: Laad muis-specifieke features alleen op non-touch apparaten
-    if (!isTouchDevice()) {
-        document.body.classList.add('no-touch');
-        initCustomCursor();
-        initClickRippleEffect();
-    }
-});
+        // DE BELANGRIJKE CHECK: Laad muis-specifieke features alleen op non-touch apparaten
+        if (!isTouchDevice()) {
+            document.body.classList.add('no-touch');
+            initCustomCursor();
+            initClickRippleEffect();
+        }
+    });
 
     /**
      * FUNCTIE: Mobiele Navigatie (Hamburger Menu)
@@ -218,6 +218,9 @@ p2Impact: " Drove greater student influence on university governance and improve
      */
     function initClickRippleEffect() {
         document.addEventListener('click', (e) => {
+            // Voorkom ripple op de custom cursor zelf
+            if (e.target.closest('.cursor, .cursor-follower')) return;
+            
             const ripple = document.createElement('div');
             ripple.classList.add('ripple');
             document.body.appendChild(ripple);
@@ -280,100 +283,14 @@ p2Impact: " Drove greater student influence on university governance and improve
         const timelineContainer = document.querySelector('.timeline');
         if (!timelineContainer) return;
         const timelineData = [
-  {
-    nl: {
-      title: "Co-founder – TwinPixel Webdesign & IT-consultancy",
-      desc: "Oprichter van een modern bureau voor maatwerkwebsites, SEO, AI-chatbots en strategisch digitaal advies. Gericht op ondernemers en organisaties met groeiambitie.",
-      date: "maart 2025 – heden"
-    },
-    en: {
-      title: "Co-founder – TwinPixel Webdesign & IT Consultancy",
-      desc: "Founder of a modern agency for custom websites, SEO, AI chatbot integration, and strategic digital advice. Focused on entrepreneurs and growth-oriented organizations.",
-      date: "March 2025 – Present"
-    }
-  },
-  {
-    nl: {
-      title: "Lid – Studentenhogeschoolraad CHE",
-      desc: "Behartig de belangen van studenten op centraal niveau, lever inhoudelijke input op beleid, en verbind onderwijs met de studentbeleving.",
-      date: "maart 2025 – heden"
-    },
-    en: {
-      title: "Member – CHE Student Council",
-      desc: "Representing students at the central level, providing substantive input on policy, and connecting education with the student experience.",
-      date: "March 2025 – Present"
-    }
-  },
-  {
-    nl: {
-      title: "IT Consultant",
-      company: "Wageningen University & Research",
-      desc: "Verbeteren van IT-processen, opstellen van strategische adviezen en visualiseren van AV-infrastructuur ter ondersteuning van besluitvorming.",
-      date: "oktober 2024 – heden"
-    },
-    en: {
-      title: "IT Consultant",
-      company: "Wageningen University & Research",
-      desc: "Improving IT processes, creating strategic advisory reports, and visualizing AV infrastructure to support decision-making.",
-      date: "October 2024 – Present"
-    }
-  },
-  {
-    nl: {
-      title: "Voorzitter – Jongerenraad Wageningen",
-      desc: "Leid de raad, adviseer de gemeente over jongerenbeleid, en bouw aan een duurzame brug tussen jongeren en politiek-bestuurlijke organen.",
-      date: "oktober 2024 – heden"
-    },
-    en: {
-      title: "Chair – Wageningen Youth Council",
-      desc: "Leading the council, advising the municipality on youth policy, and building a sustainable bridge between youth and political decision-makers.",
-      date: "October 2024 – Present"
-    }
-  },
-  {
-    nl: {
-      title: "Student Assessor",
-      company: "Christelijke Hogeschool Ede",
-      desc: "Schakelfiguur tussen studenten en bestuur; verantwoordelijk voor strategisch advies, beleidsinput en het opzetten van impactvolle events.",
-      date: "april 2023 – januari 2024"
-    },
-    en: {
-      title: "Student Assessor",
-      company: "CHE University of Applied Sciences",
-      desc: "Liaison between students and the executive board; responsible for strategic advice, policy input, and organizing impactful events.",
-      date: "April 2023 – January 2024"
-    }
-  },
-  {
-    nl: {
-      title: "Voorzitter & Oprichter – S.V. NULL",
-      company: "Studievereniging ICT",
-      desc: "ICT-vereniging opgezet vanuit niets; leidde een team, vergrootte betrokkenheid van studenten en organiseerde educatieve én sociale activiteiten.",
-      date: "september 2022 – augustus 2024"
-    },
-    en: {
-      title: "Chair & Founder – S.V. NULL",
-      company: "ICT Study Association",
-      desc: "Founded the ICT study association from scratch; led a team, increased student engagement, and organized both educational and social activities.",
-      date: "September 2022 – August 2024"
-    }
-  },
-  {
-    nl: {
-      title: "BA ICT – Christelijke Hogeschool Ede",
-      company: "Specialisatie: IT-Consultancy",
-      desc: "T-shaped opleiding met focus op consultancy, development en UX. Stages met o.a. implementatie van HubSpot en PowerApps binnen het mkb.",
-      date: "september 2022 – heden"
-    },
-    en: {
-      title: "BA ICT – CHE University of Applied Sciences",
-      company: "Specialization: IT Consultancy",
-      desc: "T-shaped program focused on consultancy, development, and UX. Internships included implementing HubSpot and PowerApps in SME environments.",
-      date: "September 2022 – Present"
-    }
-  }
-];
-
+            { nl: { title: "Co-founder – TwinPixel Webdesign & IT-consultancy", desc: "Oprichter van een modern bureau voor maatwerkwebsites, SEO, AI-chatbots en strategisch digitaal advies. Gericht op ondernemers en organisaties met groeiambitie.", date: "maart 2025 – heden" }, en: { title: "Co-founder – TwinPixel Webdesign & IT Consultancy", desc: "Founder of a modern agency for custom websites, SEO, AI chatbot integration, and strategic digital advice. Focused on entrepreneurs and growth-oriented organizations.", date: "March 2025 – Present" } },
+            { nl: { title: "Lid – Studentenhogeschoolraad CHE", desc: "Behartig de belangen van studenten op centraal niveau, lever inhoudelijke input op beleid, en verbind onderwijs met de studentbeleving.", date: "maart 2025 – heden" }, en: { title: "Member – CHE Student Council", desc: "Representing students at the central level, providing substantive input on policy, and connecting education with the student experience.", date: "March 2025 – Present" } },
+            { nl: { title: "IT Consultant", company: "Wageningen University & Research", desc: "Verbeteren van IT-processen, opstellen van strategische adviezen en visualiseren van AV-infrastructuur ter ondersteuning van besluitvorming.", date: "oktober 2024 – heden" }, en: { title: "IT Consultant", company: "Wageningen University & Research", desc: "Improving IT processes, creating strategic advisory reports, and visualizing AV infrastructure to support decision-making.", date: "October 2024 – Present" } },
+            { nl: { title: "Voorzitter – Jongerenraad Wageningen", desc: "Leid de raad, adviseer de gemeente over jongerenbeleid, en bouw aan een duurzame brug tussen jongeren en politiek-bestuurlijke organen.", date: "oktober 2024 – heden" }, en: { title: "Chair – Wageningen Youth Council", desc: "Leading the council, advising the municipality on youth policy, and building a sustainable bridge between youth and political decision-makers.", date: "October 2024 – Present" } },
+            { nl: { title: "Student Assessor", company: "Christelijke Hogeschool Ede", desc: "Schakelfiguur tussen studenten en bestuur; verantwoordelijk voor strategisch advies, beleidsinput en het opzetten van impactvolle events.", date: "april 2023 – januari 2024" }, en: { title: "Student Assessor", company: "CHE University of Applied Sciences", desc: "Liaison between students and the executive board; responsible for strategic advice, policy input, and organizing impactful events.", date: "April 2023 – January 2024" } },
+            { nl: { title: "Voorzitter & Oprichter – S.V. NULL", company: "Studievereniging ICT", desc: "ICT-vereniging opgezet vanuit niets; leidde een team, vergrootte betrokkenheid van studenten en organiseerde educatieve én sociale activiteiten.", date: "september 2022 – augustus 2024" }, en: { title: "Chair & Founder – S.V. NULL", company: "ICT Study Association", desc: "Founded the ICT study association from scratch; led a team, increased student engagement, and organized both educational and social activities.", date: "September 2022 – August 2024" } },
+            { nl: { title: "BA ICT – Christelijke Hogeschool Ede", company: "Specialisatie: IT-Consultancy", desc: "T-shaped opleiding met focus op consultancy, development en UX. Stages met o.a. implementatie van HubSpot en PowerApps binnen het mkb.", date: "september 2022 – heden" }, en: { title: "BA ICT – CHE University of Applied Sciences", company: "Specialization: IT Consultancy", desc: "T-shaped program focused on consultancy, development, and UX. Internships included implementing HubSpot and PowerApps in SME environments.", date: "September 2022 – Present" } }
+        ];
         let html = '';
         timelineData.forEach((item, index) => {
             const content = item[lang] || item.nl;
@@ -412,9 +329,7 @@ p2Impact: " Drove greater student influence on university governance and improve
      */
     function initSmoothScrolling() {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            // Negeer links in het mobiele menu, want die hebben hun eigen logica
             if (anchor.closest('.header__menu')) return; 
-
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetElement = document.querySelector(this.getAttribute('href'));
@@ -487,38 +402,37 @@ p2Impact: " Drove greater student influence on university governance and improve
     /**
      * FUNCTIE: CUSTOM CURSOR
      */
-function initCustomCursor() {
-    const cursor = document.querySelector('.cursor');
-    const follower = document.querySelector('.cursor-follower');
-    if (!cursor || !follower) return;
+    function initCustomCursor() {
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+        if (!cursor || !follower) return;
+        
+        cursor.style.display = 'block';
+        follower.style.display = 'block';
 
-    // Maak de cursor-elementen zichtbaar (ze zijn standaard verborgen)
-    cursor.style.display = 'block';
-    follower.style.display = 'block';
-    
-    const interactiveElements = 'a, .btn, button, .timeline__content, .case-study';
-    let posX = 0, posY = 0;
-    let mouseX = 0, mouseY = 0;
-    window.addEventListener('mousemove', e => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-    const followMouse = () => {
-        posX += (mouseX - posX) * 0.2;
-        posY += (mouseY - posY) * 0.2;
-        cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-        follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
-        requestAnimationFrame(followMouse);
-    };
-    followMouse();
-    document.body.addEventListener('mouseover', (e) => {
-        if (e.target.closest(interactiveElements)) {
-            document.body.classList.add('cursor-grow');
-        } else {
-             document.body.classList.remove('cursor-grow');
-        }
-    });
-}
+        const interactiveElements = 'a, .btn, button, .timeline__content, .case-study';
+        let posX = 0, posY = 0;
+        let mouseX = 0, mouseY = 0;
+        window.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        const followMouse = () => {
+            posX += (mouseX - posX) * 0.2;
+            posY += (mouseY - posY) * 0.2;
+            cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+            follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
+            requestAnimationFrame(followMouse);
+        };
+        followMouse();
+        document.body.addEventListener('mouseover', (e) => {
+            if (e.target.closest(interactiveElements)) {
+                document.body.classList.add('cursor-grow');
+            } else {
+                 document.body.classList.remove('cursor-grow');
+            }
+        });
+    }
 
     /**
      * FUNCTIE: DYNAMISCH JAARTAL IN FOOTER
