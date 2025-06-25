@@ -23,21 +23,28 @@ document.addEventListener('DOMContentLoaded', () => {
   let mouseX = 0, mouseY = 0;
   let posX = 0, posY = 0;
 
-  // Cursor direct laten volgen
+  // Sla de muispositie op
   document.addEventListener('mousemove', e => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
   });
+  
+  // Functie die de animatie uitvoert
+  function animateCursor() {
+    // Directe cursor (kleine stip)
+    // We gebruiken nu CSS variabelen voor een betere samenwerking met CSS
+    cursor.style.setProperty('--cursor-x', mouseX + 'px');
+    cursor.style.setProperty('--cursor-y', mouseY + 'px');
 
-  // Follower met vertraging
-  function follow() {
+    // Follower met vertraging (grote cirkel)
     posX += (mouseX - posX) * 0.2;
     posY += (mouseY - posY) * 0.2;
-    follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
-    requestAnimationFrame(follow);
+    follower.style.setProperty('--follower-x', posX + 'px');
+    follower.style.setProperty('--follower-y', posY + 'px');
+
+    requestAnimationFrame(animateCursor);
   }
-  follow();
+  animateCursor();
 
   // Hover effect op interactieve elementen
   document.body.addEventListener('mouseover', e => {
