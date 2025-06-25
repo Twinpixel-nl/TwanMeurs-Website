@@ -42,7 +42,7 @@ a:hover { color: var(--color-accent-hover); }
 .header__container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
 .header__logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
 .header__logo-icon {
-    height: 32px; /* Stelt de hoogte van het logo in */
+    height: 50px; /* Stelt de hoogte van het logo in */
     width: auto;  /* Zorgt ervoor dat de breedte automatisch schaalt */
 }
 .header__logo-text { font-family: var(--font-secondary); font-size: 1.5rem; color: var(--color-text-light); }
