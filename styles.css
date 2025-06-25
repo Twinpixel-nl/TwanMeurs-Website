@@ -249,3 +249,12 @@ body.cursor-grow .cursor-follower { width: 60px; height: 60px; background-color:
   .about__image-container { order: 2; }
   .case-study-grid { grid-template-columns: repeat(2, 1fr); }
 }
+@media (hover: none) and (pointer: coarse) {
+  .cursor {
+    display: none !important;
+  }
+
+  .ripple-effect {
+    display: none !important;
+  }
+}
