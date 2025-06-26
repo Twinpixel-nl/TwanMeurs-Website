@@ -1,9 +1,10 @@
-// cursor.js - EXPERT VERSIE MET VOLLEDIGE UX-PERFECTIE
+// cursor.js - EXPERT VERSIE MET DELTA TIME CORRECTIE VOOR SOEPELE ANIMATIE
 
 (function() {
   'use strict';
 
   // --- CONFIGURATIE & SETUP ---
+  const LERP_FACTOR = 0.2; // Snelheid van de follower (0.1 = langzaam, 0.3 = snel)
   const interactiveElements = 'a, button, .btn, .timeline__content, .case-study';
   const textInputElements = 'input[type="text"], input[type="email"], input[type="search"], input[type="number"], input[type="password"], textarea';
   
@@ -18,18 +19,16 @@
   // --- STATE & VARIABELEN ---
   let mouseX = 0, mouseY = 0;
   let posX = 0, posY = 0;
-  let isFirstMove = true; // Houdt bij of de muis voor het eerst beweegt
+  let lastTime = 0; // Houdt de tijd van de vorige frame bij
+  let isFirstMove = true;
 
   // --- DEVICE & POINTER CHECK ---
-  // Stopt het script op apparaten zonder fijne pointer (muis/trackpad)
   if (window.matchMedia('(pointer: coarse)').matches) {
     console.log('Coarse pointer gedetecteerd. Custom cursor wordt uitgeschakeld.');
     return;
   }
 
   // --- EVENT LISTENERS ---
-
-  // 1. EERSTE MUISBEWEGING: Maakt de cursor zichtbaar
   document.addEventListener('mousemove', e => {
     if (isFirstMove) {
       document.body.classList.add('cursor-active');
@@ -39,23 +38,11 @@
     mouseY = e.clientY;
   });
 
-  // 2. VERLAAT & BETREEDT BROWSERVENSTER: Verbergt/toont de cursor
-  document.addEventListener('mouseleave', () => {
-    document.body.classList.remove('cursor-active');
-  });
-  document.addEventListener('mouseenter', () => {
-    document.body.classList.add('cursor-active');
-  });
+  document.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+  document.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
+  document.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
+  document.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
 
-  // 3. KLIK-FEEDBACK: Krimpt de cursor bij een muisklik
-  document.addEventListener('mousedown', () => {
-    document.body.classList.add('cursor-down');
-  });
-  document.addEventListener('mouseup', () => {
-    document.body.classList.remove('cursor-down');
-  });
-
-  // 4. HOVER-EFFECTEN: Groeien of verbergen bij specifieke elementen
   document.body.addEventListener('mouseover', e => {
     if (e.target.closest(interactiveElements)) {
       document.body.classList.add('cursor-grow');
@@ -69,7 +56,6 @@
     }
   });
 
-  // 5. RIPPLE-EFFECT BIJ KLIK
   document.addEventListener('click', e => {
     const ripple = document.createElement('div');
     ripple.classList.add('ripple');
@@ -79,21 +65,37 @@
     setTimeout(() => ripple.remove(), 600);
   });
 
-  // --- DE ANIMATIE-LOOP ---
-  const animateCursor = () => {
-    posX += (mouseX - posX) * 0.2;
-    posY += (mouseY - posY) * 0.2;
+  // --- DE ANIMATIE-LOOP MET DELTA TIME CORRECTIE ---
+  const animateCursor = (timestamp) => {
+    // timestamp wordt automatisch door requestAnimationFrame meegegeven
+    if (!lastTime) {
+      lastTime = timestamp;
+    }
+    const deltaTime = timestamp - lastTime;
+    lastTime = timestamp;
+
+    // Pas de LERP-factor aan op basis van de verstreken tijd.
+    // Dit zorgt ervoor dat de beweging consistent is, zelfs bij wisselende framerates.
+    // De '16.67' is de ideale duur voor 1 frame bij 60fps.
+    const lerpAmount = 1 - Math.exp(-LERP_FACTOR * deltaTime / 16.67);
+
+    // Bereken de nieuwe positie
+    posX += (mouseX - posX) * lerpAmount;
+    posY += (mouseY - posY) * lerpAmount;
     
+    // Update de CSS-variabelen
     cursor.style.setProperty('--cursor-x', `${mouseX}px`);
     cursor.style.setProperty('--cursor-y', `${mouseY}px`);
     
     follower.style.setProperty('--follower-x', `${posX}px`);
     follower.style.setProperty('--follower-y', `${posY}px`);
     
+    // Vraag de volgende animatieframe aan
     requestAnimationFrame(animateCursor);
   };
-  animateCursor();
+  // Start de animatieloop
+  requestAnimationFrame(animateCursor);
 
-  console.log('Expert custom cursor & ripple effect succesvol geïnitialiseerd.');
+  console.log('Expert custom cursor (JS-driven met Delta Time) succesvol geïnitialiseerd.');
 
 })();
