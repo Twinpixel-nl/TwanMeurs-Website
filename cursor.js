@@ -1,16 +1,34 @@
-// cursor.js - EXPERT VERSIE MET DELTA TIME CORRECTIE VOOR SOEPELE ANIMATIE
+// cursor.js - EXPERT VERSIE MET DELTA TIME & 'mouseover' OPTIMALISATIE
 
 (function() {
   'use strict';
+
+  // --- HELPERFUNCTIE VOOR PRESTATIE-OPTIMALISATIE ---
+  /**
+   * Debounce-functie: Zorgt ervoor dat een functie pas wordt uitgevoerd nadat
+   * er een bepaalde tijd geen nieuwe aanroep is geweest. Voorkomt overmatige
+   * uitvoering van 'dure' functies, zoals die in een 'mouseover' event.
+   * @param {Function} func De functie die gedebounced moet worden.
+   * @param {number} [wait=10] De wachttijd in milliseconden. Een korte tijd (5-10ms) is ideaal hier.
+   * @returns {Function} De nieuwe, gedebounced functie.
+   */
+  function debounce(func, wait = 10) {
+    let timeout;
+    return function(...args) {
+      const context = this;
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(context, args), wait);
+    };
+  }
 
   // --- CONFIGURATIE & SETUP ---
   const LERP_FACTOR = 0.2; // Snelheid van de follower (0.1 = langzaam, 0.3 = snel)
   const interactiveElements = 'a, button, .btn, .timeline__content, .case-study';
   const textInputElements = 'input[type="text"], input[type="email"], input[type="search"], input[type="number"], input[type="password"], textarea';
-  
+
   const cursor = document.querySelector('.cursor');
   const follower = document.querySelector('.cursor-follower');
-  
+
   if (!cursor || !follower) {
     console.error('Custom cursor HTML-elementen niet gevonden.');
     return;
@@ -43,7 +61,9 @@
   document.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
   document.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
 
-  document.body.addEventListener('mouseover', e => {
+  // --- OPTIMALISATIE: 'mouseover' event ---
+  // De logica voor het controleren van elementen wordt in een aparte functie gezet.
+  const checkHoveredElement = (e) => {
     if (e.target.closest(interactiveElements)) {
       document.body.classList.add('cursor-grow');
       document.body.classList.remove('cursor-text');
@@ -54,7 +74,17 @@
       document.body.classList.remove('cursor-grow');
       document.body.classList.remove('cursor-text');
     }
-  });
+  };
+
+  // We 'wrappen' de functie met onze debounce helper.
+  // Dit zorgt ervoor dat de code alleen wordt uitgevoerd als de muis even stopt,
+  // wat voorkomt dat de browser wordt overbelast tijdens snelle bewegingen.
+  const debouncedCheckHover = debounce(checkHoveredElement, 10);
+
+  // We koppelen de nieuwe, geoptimaliseerde functie aan de event listener.
+  document.body.addEventListener('mouseover', debouncedCheckHover);
+  
+  // --- EINDE OPTIMALISATIE ---
 
   document.addEventListener('click', e => {
     const ripple = document.createElement('div');
@@ -67,35 +97,26 @@
 
   // --- DE ANIMATIE-LOOP MET DELTA TIME CORRECTIE ---
   const animateCursor = (timestamp) => {
-    // timestamp wordt automatisch door requestAnimationFrame meegegeven
     if (!lastTime) {
       lastTime = timestamp;
     }
     const deltaTime = timestamp - lastTime;
     lastTime = timestamp;
 
-    // Pas de LERP-factor aan op basis van de verstreken tijd.
-    // Dit zorgt ervoor dat de beweging consistent is, zelfs bij wisselende framerates.
-    // De '16.67' is de ideale duur voor 1 frame bij 60fps.
     const lerpAmount = 1 - Math.exp(-LERP_FACTOR * deltaTime / 16.67);
 
-    // Bereken de nieuwe positie
     posX += (mouseX - posX) * lerpAmount;
     posY += (mouseY - posY) * lerpAmount;
-    
-    // Update de CSS-variabelen
+
     cursor.style.setProperty('--cursor-x', `${mouseX}px`);
     cursor.style.setProperty('--cursor-y', `${mouseY}px`);
-    
     follower.style.setProperty('--follower-x', `${posX}px`);
     follower.style.setProperty('--follower-y', `${posY}px`);
-    
-    // Vraag de volgende animatieframe aan
+
     requestAnimationFrame(animateCursor);
   };
-  // Start de animatieloop
   requestAnimationFrame(animateCursor);
 
-  console.log('Expert custom cursor (JS-driven met Delta Time) succesvol geïnitialiseerd.');
+  console.log('Geoptimaliseerde custom cursor (JS-driven met Delta Time & Debounce) succesvol geïnitialiseerd.');
 
 })();
