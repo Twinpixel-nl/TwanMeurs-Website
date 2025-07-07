@@ -1,17 +1,9 @@
-// cursor.js - EXPERT VERSIE MET DELTA TIME & 'mouseover' OPTIMALISATIE
+// cursor.js - DEFINITIEVE VERSIE, ONTWORPEN OM PERFECT SAMEN TE WERKEN MET CSS-TRANSITIES
 
 (function() {
   'use strict';
 
   // --- HELPERFUNCTIE VOOR PRESTATIE-OPTIMALISATIE ---
-  /**
-   * Debounce-functie: Zorgt ervoor dat een functie pas wordt uitgevoerd nadat
-   * er een bepaalde tijd geen nieuwe aanroep is geweest. Voorkomt overmatige
-   * uitvoering van 'dure' functies, zoals die in een 'mouseover' event.
-   * @param {Function} func De functie die gedebounced moet worden.
-   * @param {number} [wait=10] De wachttijd in milliseconden. Een korte tijd (5-10ms) is ideaal hier.
-   * @returns {Function} De nieuwe, gedebounced functie.
-   */
   function debounce(func, wait = 10) {
     let timeout;
     return function(...args) {
@@ -23,7 +15,8 @@
 
   // --- CONFIGURATIE & SETUP ---
   const LERP_FACTOR = 0.2; // Snelheid van de follower (0.1 = langzaam, 0.3 = snel)
-  const interactiveElements = 'a, button, .btn, .timeline__content, .case-study';
+  // Uitgebreide lijst gebaseerd op je stylesheet voor een complete ervaring
+  const interactiveElements = 'a, button, .btn, .timeline__content, .case-study, .header__toggle, .lang-link, .footer__socials a, .whatsapp-btn';
   const textInputElements = 'input[type="text"], input[type="email"], input[type="search"], input[type="number"], input[type="password"], textarea';
 
   const cursor = document.querySelector('.cursor');
@@ -33,17 +26,19 @@
     console.error('Custom cursor HTML-elementen niet gevonden.');
     return;
   }
-
+  
   // --- STATE & VARIABELEN ---
-  let mouseX = 0, mouseY = 0;
-  let posX = 0, posY = 0;
-  let lastTime = 0; // Houdt de tijd van de vorige frame bij
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let posX = window.innerWidth / 2;
+  let posY = window.innerHeight / 2;
+  
+  let lastTime = 0;
   let isFirstMove = true;
 
   // --- DEVICE & POINTER CHECK ---
-  if (window.matchMedia('(pointer: coarse)').matches) {
-    console.log('Coarse pointer gedetecteerd. Custom cursor wordt uitgeschakeld.');
-    return;
+  if (window.matchMedia('(hover: none), (max-width: 768px)').matches) {
+    return; // De CSS regelt al het verbergen, dus hier hoeft niets meer.
   }
 
   // --- EVENT LISTENERS ---
@@ -56,14 +51,7 @@
     mouseY = e.clientY;
   });
 
-  document.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
-  document.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
-  document.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
-  document.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
-
-  // --- OPTIMALISATIE: 'mouseover' event ---
-  // De logica voor het controleren van elementen wordt in een aparte functie gezet.
-  const checkHoveredElement = (e) => {
+  const checkHoveredElement = debounce(e => {
     if (e.target.closest(interactiveElements)) {
       document.body.classList.add('cursor-grow');
       document.body.classList.remove('cursor-text');
@@ -71,22 +59,17 @@
       document.body.classList.add('cursor-text');
       document.body.classList.remove('cursor-grow');
     } else {
-      document.body.classList.remove('cursor-grow');
-      document.body.classList.remove('cursor-text');
+      document.body.classList.remove('cursor-grow', 'cursor-text');
     }
-  };
+  }, 10);
 
-  // We 'wrappen' de functie met onze debounce helper.
-  // Dit zorgt ervoor dat de code alleen wordt uitgevoerd als de muis even stopt,
-  // wat voorkomt dat de browser wordt overbelast tijdens snelle bewegingen.
-  const debouncedCheckHover = debounce(checkHoveredElement, 10);
-
-  // We koppelen de nieuwe, geoptimaliseerde functie aan de event listener.
-  document.body.addEventListener('mouseover', debouncedCheckHover);
-  
-  // --- EINDE OPTIMALISATIE ---
+  document.body.addEventListener('mouseover', checkHoveredElement);
+  document.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
+  document.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
+  document.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
 
   document.addEventListener('click', e => {
+    // Deze code is voor het 'ripple' effect. Het staat los van de cursor zelf.
     const ripple = document.createElement('div');
     ripple.classList.add('ripple');
     document.body.appendChild(ripple);
@@ -95,28 +78,30 @@
     setTimeout(() => ripple.remove(), 600);
   });
 
-  // --- DE ANIMATIE-LOOP MET DELTA TIME CORRECTIE ---
+  // --- DE ANIMATIE-LOOP: HIER ZIT DE KERN ---
   const animateCursor = (timestamp) => {
-    if (!lastTime) {
-      lastTime = timestamp;
-    }
+    if (!lastTime) lastTime = timestamp;
     const deltaTime = timestamp - lastTime;
     lastTime = timestamp;
 
     const lerpAmount = 1 - Math.exp(-LERP_FACTOR * deltaTime / 16.67);
-
     posX += (mouseX - posX) * lerpAmount;
     posY += (mouseY - posY) * lerpAmount;
-
+    
+    // DEZE CODE GEEFT ALLEEN DE COÖRDINATEN DOOR AAN DE CSS.
+    // HET ZEGT NIET *HOE* DE CURSOR MOET BEWEGEN.
+    // DIT IS DE JUISTE METHODE.
     cursor.style.setProperty('--cursor-x', `${mouseX}px`);
     cursor.style.setProperty('--cursor-y', `${mouseY}px`);
+    
     follower.style.setProperty('--follower-x', `${posX}px`);
     follower.style.setProperty('--follower-y', `${posY}px`);
-
+    
     requestAnimationFrame(animateCursor);
   };
+  
   requestAnimationFrame(animateCursor);
 
-  console.log('Geoptimaliseerde custom cursor (JS-driven met Delta Time & Debounce) succesvol geïnitialiseerd.');
+  console.log('Custom cursor (gesynchroniseerd met CSS) succesvol geïnitialiseerd.');
 
 })();
