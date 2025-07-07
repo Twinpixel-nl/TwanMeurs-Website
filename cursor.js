@@ -1,44 +1,31 @@
-// cursor.js - DEFINITIEVE VERSIE, ONTWORPEN OM PERFECT SAMEN TE WERKEN MET CSS-TRANSITIES
+// cursor.js - EXPERT VERSIE MET DELTA TIME CORRECTIE VOOR SOEPELE ANIMATIE
 
 (function() {
   'use strict';
 
-  // --- HELPERFUNCTIE VOOR PRESTATIE-OPTIMALISATIE ---
-  function debounce(func, wait = 10) {
-    let timeout;
-    return function(...args) {
-      const context = this;
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(context, args), wait);
-    };
-  }
-
   // --- CONFIGURATIE & SETUP ---
   const LERP_FACTOR = 0.2; // Snelheid van de follower (0.1 = langzaam, 0.3 = snel)
-  // Uitgebreide lijst gebaseerd op je stylesheet voor een complete ervaring
-  const interactiveElements = 'a, button, .btn, .timeline__content, .case-study, .header__toggle, .lang-link, .footer__socials a, .whatsapp-btn';
+  const interactiveElements = 'a, button, .btn, .timeline__content, .case-study';
   const textInputElements = 'input[type="text"], input[type="email"], input[type="search"], input[type="number"], input[type="password"], textarea';
-
+  
   const cursor = document.querySelector('.cursor');
   const follower = document.querySelector('.cursor-follower');
-
+  
   if (!cursor || !follower) {
     console.error('Custom cursor HTML-elementen niet gevonden.');
     return;
   }
-  
+
   // --- STATE & VARIABELEN ---
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let posX = window.innerWidth / 2;
-  let posY = window.innerHeight / 2;
-  
-  let lastTime = 0;
+  let mouseX = 0, mouseY = 0;
+  let posX = 0, posY = 0;
+  let lastTime = 0; // Houdt de tijd van de vorige frame bij
   let isFirstMove = true;
 
   // --- DEVICE & POINTER CHECK ---
-  if (window.matchMedia('(hover: none), (max-width: 768px)').matches) {
-    return; // De CSS regelt al het verbergen, dus hier hoeft niets meer.
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    console.log('Coarse pointer gedetecteerd. Custom cursor wordt uitgeschakeld.');
+    return;
   }
 
   // --- EVENT LISTENERS ---
@@ -51,7 +38,12 @@
     mouseY = e.clientY;
   });
 
-  const checkHoveredElement = debounce(e => {
+  document.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+  document.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
+  document.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
+  document.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
+
+  document.body.addEventListener('mouseover', e => {
     if (e.target.closest(interactiveElements)) {
       document.body.classList.add('cursor-grow');
       document.body.classList.remove('cursor-text');
@@ -59,17 +51,12 @@
       document.body.classList.add('cursor-text');
       document.body.classList.remove('cursor-grow');
     } else {
-      document.body.classList.remove('cursor-grow', 'cursor-text');
+      document.body.classList.remove('cursor-grow');
+      document.body.classList.remove('cursor-text');
     }
-  }, 10);
-
-  document.body.addEventListener('mouseover', checkHoveredElement);
-  document.addEventListener('mousedown', () => document.body.classList.add('cursor-down'));
-  document.addEventListener('mouseup', () => document.body.classList.remove('cursor-down'));
-  document.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+  });
 
   document.addEventListener('click', e => {
-    // Deze code is voor het 'ripple' effect. Het staat los van de cursor zelf.
     const ripple = document.createElement('div');
     ripple.classList.add('ripple');
     document.body.appendChild(ripple);
@@ -78,30 +65,37 @@
     setTimeout(() => ripple.remove(), 600);
   });
 
-  // --- DE ANIMATIE-LOOP: HIER ZIT DE KERN ---
+  // --- DE ANIMATIE-LOOP MET DELTA TIME CORRECTIE ---
   const animateCursor = (timestamp) => {
-    if (!lastTime) lastTime = timestamp;
+    // timestamp wordt automatisch door requestAnimationFrame meegegeven
+    if (!lastTime) {
+      lastTime = timestamp;
+    }
     const deltaTime = timestamp - lastTime;
     lastTime = timestamp;
 
+    // Pas de LERP-factor aan op basis van de verstreken tijd.
+    // Dit zorgt ervoor dat de beweging consistent is, zelfs bij wisselende framerates.
+    // De '16.67' is de ideale duur voor 1 frame bij 60fps.
     const lerpAmount = 1 - Math.exp(-LERP_FACTOR * deltaTime / 16.67);
+
+    // Bereken de nieuwe positie
     posX += (mouseX - posX) * lerpAmount;
     posY += (mouseY - posY) * lerpAmount;
     
-    // DEZE CODE GEEFT ALLEEN DE COÖRDINATEN DOOR AAN DE CSS.
-    // HET ZEGT NIET *HOE* DE CURSOR MOET BEWEGEN.
-    // DIT IS DE JUISTE METHODE.
+    // Update de CSS-variabelen
     cursor.style.setProperty('--cursor-x', `${mouseX}px`);
     cursor.style.setProperty('--cursor-y', `${mouseY}px`);
     
     follower.style.setProperty('--follower-x', `${posX}px`);
     follower.style.setProperty('--follower-y', `${posY}px`);
     
+    // Vraag de volgende animatieframe aan
     requestAnimationFrame(animateCursor);
   };
-  
+  // Start de animatieloop
   requestAnimationFrame(animateCursor);
 
-  console.log('Custom cursor (gesynchroniseerd met CSS) succesvol geïnitialiseerd.');
+  console.log('Expert custom cursor (JS-driven met Delta Time) succesvol geïnitialiseerd.');
 
 })();
