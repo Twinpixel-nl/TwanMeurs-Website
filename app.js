@@ -78,14 +78,17 @@ expertise_t3_list: `
   <li>Politiek bewustzijn & maatschappelijke betrokkenheid</li>
 `,
 
-            // Erkenning
-            recognitionTitle: "Erkenning & Certificeringen",
-            rec_1_title: "Top 5 Finalist",
-            rec_1_desc: "Student van het Jaar Award 2024, voor de meest impactvolle studenten in Nederland.",
-            rec_2_title: "C2 Cambridge English",
-            rec_2_desc: "Bewezen Engelse taalvaardigheid op het hoogst haalbare niveau (Proficiency).",
-            rec_3_title: "Lean Green Belt",
-            rec_3_desc: "Bekwaam in procesoptimalisatie en het creëren en implementeren van efficiënte workflows.",
+// Erkenning
+recognitionTitle: "Erkenning & Certificeringen",
+
+rec_1_title: "Top 5 Finalist",
+rec_1_desc: "Genomineerd voor de Student van het Jaar Award 2024, als een van de meest impactvolle studenten van Nederland.",
+
+rec_2_title: "C2 Cambridge English",
+rec_2_desc: "Engelse taalvaardigheid bewezen op het hoogste niveau (C2 CEFR – Proficiency).",
+
+rec_3_title: "Lean Six Sigma Green Belt",
+rec_3_desc: "Bekwaam in procesoptimalisatie en het toepassen van efficiënte, data-gedreven workflows met Lean Six Sigma.",
 
             // Footer
             footerTitle: "Laten we verbinden.",
@@ -160,16 +163,18 @@ expertise_t3_list: `
   <li>Stakeholder Management, Change Communication</li>
   <li>Political Awareness & Social Engagement</li>
 `,
+// Recognition & Certifications
+certificationsTitle: "Recognition & Certifications",
 
-             // Recognition
-             recognitionTitle: "Recognition & Certifications",
-             rec_1_title: "Top 5 Finalist",
-             rec_1_desc: "Student of the Year Award 2024, for the most impactful students in the Netherlands.",
-             rec_2_title: "C2 Cambridge English",
-             rec_2_desc: "Proven English language proficiency at the highest achievable level (Proficiency).",
-             rec_3_title: "Lean Green Belt",
-             rec_3_desc: "Skilled in process optimization and creating and implementing efficient workflows.",
- 
+certifications_1_title: "Top 5 Finalist",
+certifications_1_text: "Nominated for the 2024 Student of the Year Award, recognizing the most impactful students in the Netherlands.",
+
+certifications_2_title: "C2 Cambridge English",
+certifications_2_text: "Proven English proficiency at the highest attainable level (Proficiency – C2 CEFR).",
+
+certifications_3_title: "Lean Six Sigma Green Belt",
+certifications_3_text: "Skilled in process optimization and implementing efficient, data-driven workflows using Lean Six Sigma methodology.",
+
              // Footer
              footerTitle: "Let's connect.",
              footerText: "Interested in a collaboration or would you like to exchange ideas? <br>I would be happy to get in touch with you.",
