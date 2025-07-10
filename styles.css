@@ -278,6 +278,24 @@ body.cursor-text.cursor-active .cursor-follower {
 }
 
 
+
+
+
+/* 10.5 icon upgrade */
+.recognition-card__icon svg {
+  width: 40px;
+  height: 40px;
+  stroke: #B10000; /* je huidige kleur */
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+
 /* ======== 11. RESPONSIVITEIT & MOBIELE NAVIGATIE ======== */
 /* Deze media query is perfect, geen wijzigingen nodig */
 @media (hover: none), (max-width: 768px) {
