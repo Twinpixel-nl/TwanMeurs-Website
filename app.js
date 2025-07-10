@@ -114,7 +114,7 @@ rec_3_desc: "Bekwaam in procesoptimalisatie en het toepassen van efficiënte, da
  
              // About Me
              aboutTitle: "My Approach",
-             aboutSubtitle: "Technologically sharp, administratively skilled.",
+             aboutSubtitle: "Technologically sharp, governance-minded..",
              aboutP1: "I believe technology is a means - not an end. As an IT consultant with experience in strategic and administrative environments, I help organizations translate complex challenges into concrete digital solutions. This includes information flows, tooling, data governance, or digital strategy.",
              aboutP2: "What sets me apart is my dual focus: I understand the technical side and speak the language of governance and policy. As a student representative on the Executive Board of CHE and founder of the student association NULL, I know how to connect people and build support. I combine this governance experience with projects at WUR, TwinPixel, and external clients.",
              aboutP3: "My approach is analytical, pragmatic, and people-oriented. I work with structure, think in terms of opportunities, and always keep the end goal in sight. Whether it’s process improvement, AI chatbots, system design, or organizational change - I make technology understandable, governable, and strategically valuable.",
