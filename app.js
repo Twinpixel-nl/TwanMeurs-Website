@@ -164,16 +164,16 @@ expertise_t3_list: `
   <li>Political Awareness & Social Engagement</li>
 `,
 // Recognition & Certifications
-certificationsTitle: "Recognition & Certifications",
+recognitionTitle: "Recognition & Certifications",
 
-certifications_1_title: "Top 5 Finalist",
-certifications_1_text: "Nominated for the 2024 Student of the Year Award, recognizing the most impactful students in the Netherlands.",
+rec_1_title: "Top 5 Finalist",
+rec_1_desc: "Nominated for the 2024 Student of the Year Award, recognizing the most impactful students in the Netherlands.",
 
-certifications_2_title: "C2 Cambridge English",
-certifications_2_text: "Proven English proficiency at the highest attainable level (Proficiency – C2 CEFR).",
+rec_2_title: "C2 Cambridge English",
+rec_2_desc: "Proven English proficiency at the highest attainable level (Proficiency – C2 CEFR).",
 
-certifications_3_title: "Lean Six Sigma Green Belt",
-certifications_3_text: "Skilled in process optimization and implementing efficient, data-driven workflows using Lean Six Sigma methodology.",
+rec_3_title: "Lean Six Sigma Green Belt",
+rec_3_desc: "Skilled in process optimization and implementing efficient, data-driven workflows using Lean Six Sigma methodology.",
 
              // Footer
              footerTitle: "Let's connect.",
