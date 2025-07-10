@@ -319,6 +319,25 @@ body.cursor-text.cursor-active .cursor-follower {
     cursor: auto;
   }
 }
+
+.footer__socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.footer__socials a svg {
+  width: 28px;
+  height: 28px;
+  fill: #999;
+  transition: fill 0.2s ease;
+}
+
+.footer__socials a:hover svg {
+  fill: #B10000;
+}
+
 @media (max-width: 850px) {
     .header__logo-text { display: none; }
     .header__menu { display: none; }
