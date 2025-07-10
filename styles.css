@@ -330,7 +330,6 @@ body.cursor-text.cursor-active .cursor-follower {
 .footer__socials a svg {
   width: 28px;
   height: 28px;
-  fill: #999;
   transition: fill 0.2s ease;
 }
 
