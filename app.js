@@ -53,14 +53,30 @@ p2Impact: " Zorgde voor directe studentbetrokkenheid bij bestuursbesluiten en ve
             // Loopbaan & Opleiding
             careerTitle: "Loopbaan & Opleiding",
             
-            // Expertise
-            expertiseTitle: "Expertise",
-            expertise_t1_title: "Technisch & Software",
-            expertise_t1_list: `<li>Python, SQL, C#, Golang, HTML, CSS, Javascript</li><li>Power BI, PowerApps, HubSpot</li><li>Word, PowerPoint, Excel</li>`,
-            expertise_t2_title: "Projectmanagement & Methoden",
-            expertise_t2_list: `<li>Agile, Scrum</li><li>Beleidsanalyse, Onderzoek</li><li>Procesoptimalisatie (Lean Green Belt)</li><li>Tijdsmanagement</li>`,
-            expertise_t3_title: "Communicatie & Leiderschap",
-            expertise_t3_list: `<li>Teamleiderschap & Samenwerking</li><li>Publiek Spreken & Presenteren</li><li>Stakeholdermanagement</li><li>Conflictoplossing</li>`,
+           // Expertise
+expertiseTitle: "Expertise",
+expertise_t1_title: "Techniek & Ontwikkeling",
+expertise_t1_list: `
+  <li>Python, SQL, C#, Golang, HTML, CSS, JavaScript, Typescript, Vue</li>
+  <li>Power BI, PowerApps, HubSpot, Netlify CMS</li>
+  <li>Git, REST API’s, JSON, Markdown</li>
+`,
+
+expertise_t2_title: "Business & Projectaanpak",
+expertise_t2_list: `
+  <li>Agile, Scrum, Design Thinking</li>
+  <li>Beleidsanalyse, Onderzoek, UX-ontwerp</li>
+  <li>Lean Green Belt, Businesscase-ontwikkeling</li>
+  <li>Klantgericht werken, Strategie & Planning</li>
+`,
+
+expertise_t3_title: "Leiderschap & Communicatie",
+expertise_t3_list: `
+  <li>Teamleiderschap & Samenwerking</li>
+  <li>Publiek Spreken & Voorzitterschap</li>
+  <li>Stakeholdermanagement, Verandercommunicatie</li>
+  <li>Politiek bewustzijn & maatschappelijke betrokkenheid</li>
+`,
 
             // Erkenning
             recognitionTitle: "Erkenning & Certificeringen",
@@ -121,14 +137,30 @@ p2Impact: " Drove greater student influence on university governance and improve
              careerTitle: "Career & Education",
  
              // Expertise
-             expertiseTitle: "Expertise",
-             expertise_t1_title: "Technical & Software",
-             expertise_t1_list: `<li>Python, SQL, C#, Golang, HTML, CSS, Javascript</li><li>Power BI, PowerApps, HubSpot</li><li>Word, PowerPoint, Excel</li>`,
-             expertise_t2_title: "Project Management & Methods",
-             expertise_t2_list: `<li>Agile, Scrum</li><li>Policy Analysis, Research</li><li>Process Optimization (Lean Green Belt)</li><li>Time Management</li>`,
-             expertise_t3_title: "Communication & Leadership",
-             expertise_t3_list: `<li>Team Leadership & Collaboration</li><li>Public Speaking & Presenting</li><li>Stakeholder Management</li><li>Conflict Resolution</li>`,
-             
+expertiseTitle: "Expertise",
+expertise_t1_title: "Technology & Development",
+expertise_t1_list: `
+  <li>Python, SQL, C#, Golang, HTML, CSS, JavaScript, Typescript, Vue</li>
+  <li>Power BI, PowerApps, HubSpot, Netlify CMS</li>
+  <li>Git, REST APIs, JSON, Markdown</li>
+`,
+
+expertise_t2_title: "Business & Project Approach",
+expertise_t2_list: `
+  <li>Agile, Scrum, Design Thinking</li>
+  <li>Policy Analysis, Research, UX Design</li>
+  <li>Lean Green Belt, Business Case Development</li>
+  <li>Customer Focus, Strategy & Planning</li>
+`,
+
+expertise_t3_title: "Leadership & Communication",
+expertise_t3_list: `
+  <li>Team Leadership & Collaboration</li>
+  <li>Public Speaking & Chairmanship</li>
+  <li>Stakeholder Management, Change Communication</li>
+  <li>Political Awareness & Social Engagement</li>
+`,
+
              // Recognition
              recognitionTitle: "Recognition & Certifications",
              rec_1_title: "Top 5 Finalist",
