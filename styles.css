@@ -291,6 +291,15 @@ body.cursor-text.cursor-active .cursor-follower {
   margin-left: auto;
   margin-right: auto;
 }
+.recognition-card__icon svg {
+  filter: drop-shadow(0 0 2px rgba(255, 0, 0, 0.3));
+}
+.recognition-card__icon svg {
+  transition: transform 0.2s ease;
+}
+.recognition-card:hover .recognition-card__icon svg {
+  transform: scale(1.1);
+}
 
 
 
